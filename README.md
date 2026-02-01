@@ -15,19 +15,19 @@ Glowup is a mobile/web application that allows customers to explore, discover, a
 
 ## App Functions
 1. Customer:
-    i. create/modify customer profile - Allow user to register an account and manage personal information
-    ii. View available services - Browse provider profile, services, prices, and availability
-    iii. Subscribe to available services - Book an appointment with selected providers
-    iv. Write reviews for subscribed services - Leave ratings and reviews 
+    1. create/modify customer profile - Allow user to register an account and manage personal information
+    2. View available services - Browse provider profile, services, prices, and availability
+    3. Subscribe to available services - Book an appointment with selected providers
+    4. Write reviews for subscribed services - Leave ratings and reviews 
     
 2. Provider (Professional hair stylist/barbers/makeup artists)
-    i. Create/modify/remove provider profile - Manage professional profile, bio, and credentials
-    ii. Create services - Add services with description, pricing, and availability 
-    iii. View customer statistics - Track appointments, rating, and customer engagement
-    iv. Reply to reviews - Respond to customer feedback publicly
+    1. Create/modify/remove provider profile - Manage professional profile, bio, and credentials
+    2. Create services - Add services with description, pricing, and availability 
+    3. View customer statistics - Track appointments, rating, and customer engagement
+    4. Reply to reviews - Respond to customer feedback publicly
 
 3. Admin 
-    i. Manage user access -  Approve, suspend, or remove users
-    ii. Moderate services - Review and approve service listings
-    iii. Moderate reviews - Remove or flag reviews
-    iv. View usage statistics - Track app activity, user growth, and bookings
+    1. Manage user access -  Approve, suspend, or remove users
+    2. Moderate services - Review and approve service listings
+    3. Moderate reviews - Remove or flag reviews
+    4. View usage statistics - Track app activity, user growth, and bookings
