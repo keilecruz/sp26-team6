@@ -1,72 +1,106 @@
 
-# Requirements – Starter Template
-
-**Project Name:** Your App Name \
-**Team:** Names and roles \
-**Course:** CSC 340\
-**Version:** 1.0\
-**Date:** 2026-01-30
+**Project Name:** GlowUp
+**Team:** Keile Cruz-Maldonado ; Maisha Fyruz
+**Course:** CSC 340
+**Version:** 1.0
+**Date:** 2026-02-12
 
 ---
 
 ## 1. Overview
-**Vision.** One or two sentences: who this is for, the core problem, and the outcome.
+**Vision.** GlowUp is a web-based platform that allows customers to connect with beauty and grooming pros. Customers can view portfolios, services, book appointments, and also leave reviews. Beauty and grooming pros can manage their services, availability, client appointments, and also reply to customer reviews. Administrators can oversee platform activity, manage user accounts, and ensure that the platform remains in compliance with its policies to provide a safe and reliable environment.
 
-**Glossary** Terms used in the project
-- **Term 1:** description.
-- **Term 2:** description
+**Glossary** 
+- **Portfolio:** Collection of images, certifications, and past work on display in provider's profile.
+- **Service listing:** Published beauty and grooming service that includes description, price, and time.
+- **Availabiliry Slot:** Date and time window that provide accepts bookings.
+- **Appointment** Scheduled service session between customer and provider.
+- **Review:** Customers rating and written feedback of the completed service.
+- **Engagement:** Platform activity that provides metrics on bookings, ratings, and review responses.
 
 **Primary Users / Roles.**
-- **Customer (e.g., Student/Patient/Pet Owner/etc. )** — 1 line goal statement.
-- **Provider (e.g., Teacher/Doctor/Pet Sitter/etc. )** — 1 line goal statement.
-- **SysAdmin (optional)** — 1 line goal statement.
+- **Customer (client seeking beauty/grooming service)** — Discover providers; book and manage appointments; leave reviews. 
+- **Provider (licensed beauty/grooming professional)** — Publish services and portfolios; manage availability and bookings; respond to reviews; track engagement.
+- **SysAdmin (optional)** — Manage user access; moderate services and reviews; monitor platform activity.
 
 **Scope (this semester).**
-- <capability 1>
-- <capability 2>
-- <capability 3>
+- Browse through providers profiles, portfolios, and services with filter/sorting.
+- Book appointments and manage bookings (cancel/reschedule).
+- Admin user access management and review moderation workflow.
+- Provider onboarding; create/edit/suspend service listing; update availability slots.
+- Reviews with basic moderation (customer write;provider reply). 
 
 **Out of scope (deferred).**
-- <deferred 1>
-- <deferred 2>
-
-> This document is **requirements‑level** and solution‑neutral; design decisions (UI layouts, API endpoints, schemas) are documented separately.
+- Online payments and refund processing.
+- SMS/email notification.
+- Mobile app version.
+- Real-time messaging/chat system.
 
 ---
 
 ## 2. Functional Requirements (User Stories)
-Write each story as: **As a `<role>`, I want `<capability>`, so that `<benefit>`.** Each story includes at least one **Given/When/Then** scenario.
+
 
 ### 2.1 Customer Stories
-- **US‑CUST‑001 — <short title>**  
-  _Story:_ As a customer, I want … so that …  
+- **US‑CUST‑001 — Register and Manage Profile**  
+  _Story:_ As a customer, I want to create and manage my profile (name, contact info, preferred services) so that I can book appointments and write reviews of my experience.
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: Register with valid details
+    Given I am not registered
+    When  I sign up with required information
+    Then  my customer profile is created and visible on my profile
   ```
 
-- **US‑CUST‑002 — <short title>**  
-  _Story:_ As a customer, I want … so that …  
+- **US‑CUST‑002 — Browse providers Profile and Portfolio**  
+  _Story:_ As a customer, I want to browse the providers profile, portfolios, and service listings so that I can evaluate the providers experience before booking.
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: View provider profile
+    Given multiple providers exist on the platform
+    When  I select a providers profile
+    Then  I can view the providers portfolio and see services, pricing, and ratings.
   ```
+
+- **US‑CUST‑003 — Filter and Search Services**  
+  _Story:_ As a customer, I want to filter and search services by category, price, rating, and availability, so that I can find services that fit my needs and budget.
+  _Acceptance:_
+  ```gherkin
+  Scenario: Filter by category and sort by rating 
+    Given multiple services exist in different categories
+    When  filter by category "Women Haircuts" and I sort rating "High/Low"
+    Then  I can only see Women hair styling options that are ordered by Highest rating first.
+  ```
+
+  - **US‑CUST‑004 — Book Appointment**  
+  _Story:_ As a customer, I want to book an available time slot, so that I can secure an appointment with a provider. 
+  _Acceptance:_
+  ```gherkin
+  Scenario: Book an available time slot
+    Given I am logged in and a provider has provide times slots
+    When  I select a date and time and confirm booking
+    Then  the appointment is saved in the system and it appears on my dashboard and the provider is notified.
+  ```
+  - **US‑CUST‑005 — Write a Review**  
+  _Story:_ As a customer, I want to leave a rating and a written review after my appointment, so that I can share my experience with other customers.
+  _Acceptance:_
+  ```gherkin
+  Scenario: Submit review for completed appointment
+    Given I have completed an appointment
+    When  I submit a rating and written review
+    Then  the review is published on the provider's profile and the provider can view and respont to it.
+  ```
+
 
 ### 2.2 Provider Stories
-- **US‑PROV‑001 — <short title>**  
-  _Story:_ As a provider, I want … so that …  
+- **US‑PROV‑001 — Register and Set up Professional Profile**  
+  _Story:_ As a provider, I want to create and manage my professional profile (bio, certifications, portfolio images and service details) so that customers can evaluate my experience and book my services.
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: Create a Provider Profile
+    Given I am not registered as a provider 
+    When  I sign up with the required personal information 
+    Then  my provider profile is created and my profile will be visible to the customers on the platform.
   ```
 
 - **US‑PROV‑002 — <short title>**  
