@@ -114,14 +114,14 @@
   ```
 
 ### 2.3 SysAdmin Stories
-- **US‑ADMIN‑001 — <short title>**  
-  _Story:_ As a sysadmin, I want … so that …  
+- **US‑ADMIN‑001 — Suspend a User account **  
+  _Story:_ As a sysadmin, I want to manage user accounts (activate, suspend, or deactivate) so that I can maintain platform security and enforce policies. 
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: Suspend a user account
+    Given the user is logged in admin dashboard and user has violated the platform policies
+    When  the administrator selects the suspend option
+    Then  the user is marked as suspened and the user can no longer log into the platform
   ```
 
 - **US‑ADMIN‑002 — <Moderate user reviews>**  
