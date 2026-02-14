@@ -103,14 +103,14 @@
     Then  my provider profile is created and my profile will be visible to the customers on the platform.
   ```
 
-- **US‑PROV‑002 — <short title>**  
-  _Story:_ As a provider, I want … so that …  
+- **US‑PROV‑002 — <Manage service availability>**  
+  _Story:_ As a provider, I want to set and update my available time slots, so that customers can book appointments only during times I am available.
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: Update availability
+  Given the provider is logged into their account
+  When the provider adds or edits available time slots
+  Then the updated availability is visible to customers searching for services
   ```
 
 ### 2.3 SysAdmin Stories
@@ -124,29 +124,33 @@
     Then  <observable outcome>
   ```
 
-- **US‑ADMIN‑002 — <short title>**  
-  _Story:_ As a sysadmin, I want … so that …  
+- **US‑ADMIN‑002 — <Moderate user reviews>**  
+  _Story:_ As a system administrator, I want to review and remove inappropriate customer reviews, so that the platform remains safe and respectful for all users
   _Acceptance:_
   ```gherkin
-  Scenario: <happy path>
-    Given <preconditions>
-    When  <action>
-    Then  <observable outcome>
+  Scenario: Remove inappropriate review
+  Given the administrator is logged into the admin dashboard
+  When the administrator selects a review that violates guidelines and removes it
+  Then the review is no longer visible on the platform
   ```
 
 ---
 
 ## 3. Non‑Functional Requirements (make them measurable)
-- **Performance:** description 
-- **Availability/Reliability:** description
-- **Security/Privacy:** description
-- **Usability:** description
+- **Performance:** The system should load main pages within 3 seconds under normal internet conditions.
+- **Availability/Reliability:** The application should be available at least 99% of the time during the semester demonstration period.
+- **Security/Privacy:** User accounts must require secure login authentication, and sensitive information such as passwords must not be stored in plain text. No real payment information will be stored in this prototype.
+- **Usability:** The interface should be easy to navigate, readable on mobile and desktop devices, and provide clear buttons and labels for booking services.
 
 ---
 
 ## 4. Assumptions, Constraints, and Policies
-- list any rules, policies, assumptions, etc.
-
+- The system is a semester project prototype and will not include full production-level features.
+- Real payment processing will not be implemented; payments are simulated only.
+- Users must create an account before booking or reviewing services.
+- Service providers are responsible for managing their own availability and service details.
+- The project must follow UNCG academic integrity policies and appropriate content guidelines.
+- Development is limited to the technologies required in CSC 340 (Java, REST API, PostgreSQL, and web interface).
 ---
 
 ## 5. Milestones (course‑aligned)
