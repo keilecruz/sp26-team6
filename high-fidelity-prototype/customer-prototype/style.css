@@ -68,7 +68,7 @@ nav .nav-links a:hover{
     margin-right: auto;
 }
 
-.hero btn{
+.hero .btn{
     display: inline-block;
     margin-top: 20px;
 }
