@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(background.png);
+    background-size: cover;
+    background-position: center;
+    padding: 10px 8%;
+    
+}
