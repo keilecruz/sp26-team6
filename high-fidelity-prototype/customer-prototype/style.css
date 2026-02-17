@@ -85,3 +85,72 @@ nav{
 
 /*-------- signup.html---------*/
 
+.signup-section{
+    padding: 80px 20px;
+    background: #f9f9fb;
+}
+
+.signup-section h2{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #d46a92;
+}
+
+.signup-section form{
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+}
+
+.signup-section form label{
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.signup-section form input, .signup-section form select{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.signup-section form input:focus, .signup-section form select:focus{
+    outline: none;
+    border-color: #d46a92;
+}
+
+.signup-section form .btn{
+    width: 100%;
+    padding: 12px;
+    font-weight: 600;
+    background: #d46a92;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.signup-section form .btn:hover{
+    background: #b8577c;
+}
+
+.signup-section p{
+    margin-top: 10px;
+    text-align: center;
+}
+
+.signup-section p a {
+    color: #d46a92;
+    text-decoration: none;
+}
+
+.signup-section p a:hover {
+    text-decoration: underline;
+}
