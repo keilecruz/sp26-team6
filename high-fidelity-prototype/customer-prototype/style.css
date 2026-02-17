@@ -135,6 +135,7 @@ nav{
     border-radius: 8px;
     border: none;
     cursor: pointer;
+
 }
 
 .signup-section form .btn:hover{
@@ -144,6 +145,7 @@ nav{
 .signup-section p{
     margin-top: 10px;
     text-align: center;
+    
 }
 
 .signup-section p a {
@@ -226,3 +228,5 @@ nav{
 .login-section p a:hover{
     text-decoration: underline;
 }
+
+/*-------- dashboard.html---------*/
