@@ -27,7 +27,8 @@
     <!--- Login Information (if user has an account for this website)-->
     <section class="login-section"> 
         <div class="container">
-            <form action="#" method="POST">
+
+            <form onsubmit="event.preventDefault(); location.href='dashboard.html'">
             <h2> Welcome Back!</h2>
 
             <label for="email">Email</label>
@@ -37,9 +38,9 @@
             <input type="password" id="password" name="password" placeholder="Enter your password">
 
             <button type="submit" class="btn">Log In</button>
-
+        
             </form>
-
+       
         <p> Don't have an Account? <a href="signup.html">Sign Up</a></p>
         
         </div>
