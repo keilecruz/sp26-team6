@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
 
 
 </head>
+
 <body>
 
     <!--- Top Header-->
@@ -17,23 +19,71 @@
 
             <div class="nav-links">
                 <a href="browse.html"> Browse Professional</a>
+                <a href="#profile"> Profile </a>
                 <a href="login.html" class="btn"> Log Out </a>
 
             </div>
-
         </nav>
-
     </header>
 
+    <!--- Dashboard Section -->
     <section class="dashboard">
         <div class="container">
-            
+            <h2> Welcome, [Your Name]!</h1>
+                <p> Find your beauty and </p>
 
-        </div>
 
+                <!-- Professionals Grid examples -->
+                <div class="cards-box">
+                    <div class="cards">
+                        <h3> Available Professionals</h3>
+
+                        <div class="card">
+                            <h3>Jane Doe</h3>
+                            <p>Hair Stylist | 5 Years Experience</p>
+                            <p>Rating: ★★★★☆</p>
+                            <a href="booking.html" class="btn">Book Appointment</a>
+                        </div>
+
+                        <div class="card">
+                            <h3>Mary Smith</h3>
+                            <p>Makeup Artist | Bridal Specialist</p>
+                            <p>Rating: ★★★★★</p>
+                            <a href="booking.html" class="btn">Book Appointment</a>
+                        </div>
+
+                        <div class="card">
+                            <h3>Anna Lee</h3>
+                            <p>Manicurist & Pedicurist</p>
+                            <p>Rating: ★★★★☆</p>
+                            <a href="booking.html" class="btn">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!--- Profile Selection -->
+                <div class="profile-box" id="profile">
+                    <h2 id="profile"> Edit Your Profile </h2>
+                    <form>
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" placeholder="[Your Name]">
+
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="[Your Email]">
+
+                        <label for="phone">Phone Number</label>
+                        <input type="text" id="phone" placeholder="[Your Phone]">
+
+                        <label for="location">Location</label>
+                        <input type="text" id="location" placeholder="[Your City]">
+
+                        <button type="button" class="btn">Save Changes</button>
+                    </form>
+
+
+                </div>
     </section>
 
-
-    
 </body>
+
 </html>
