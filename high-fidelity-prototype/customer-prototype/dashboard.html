@@ -28,30 +28,35 @@
 
     <!--- Dashboard Section -->
     <section class="dashboard">
-        <div class="container">
-            <h2> Welcome, [Your Name]!</h1>
+
+        <div class="container welcome-header">
+            <img src="../../photos/profilepic.png"alt="Profile Icon" class="profile-icon">
+            <h2> Welcome, [Your Name]!</h2>
                 <p> Find your beauty and </p>
 
-
+                <a href="edit-profile.html" class="edit-profile-btn">Edit Profile</a>
+                </div>
+                
                 <!-- Professionals Grid examples -->
                 <div class="cards-box">
+
                     <div class="cards">
-                        <h3> Available Professionals</h3>
+                        <h3> Recommended Professionals</h3>
 
                         <div class="card">
                             <h3>Jane Doe</h3>
                             <p>Hair Stylist | 5 Years Experience</p>
                             <p>Rating: ★★★★☆</p>
-                            <a href="portfolio.html" class="btn">View Portfolio</a>
-                            <a href="booking.html" class="btn">Book Appointment</a>
+                            <a href="portfolio.html" class="btn-portfolio">View Portfolio</a>
+                            <a href="booking.html" class="btn-book">Book Appointment</a>
                         </div>
 
                         <div class="card">
                             <h3>Mary Smith</h3>
                             <p>Makeup Artist | Bridal Specialist</p>
                             <p>Rating: ★★★★★</p>
-                            <a href="portfolio.html" class="btn">View Portfolio</a>
-                            <a href="booking.html" class="btn">Book Appointment</a>
+                            <a href="portfolio.html" class="btn-portfolio">View Portfolio</a>
+                            <a href="booking.html" class="btn-book">Book Appointment</a>
 
                         </div>
 
@@ -59,33 +64,77 @@
                             <h3>Anna Lee</h3>
                             <p>Manicurist & Pedicurist</p>
                             <p>Rating: ★★★★☆</p>
-                            <a href="portfolio.html" class="btn">View Portfolio</a>
-                            <a href="booking.html" class="btn">Book Appointment</a>
+                            <a href="portfolio.html" class="btn-portfolio">View Portfolio</a>
+                            <a href="booking.html" class="btn-book">Book Appointment</a>
                         </div>
                     </div>
                 </div>
 
-                <!--- Profile Selection -->
-                <div class="profile-box" id="profile">
-                    <h2 id="profile"> Edit Your Profile </h2>
-                    <form>
-                        <label for="fullname">Full Name</label>
-                        <input type="text" id="fullname" placeholder="[Your Name]">
 
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="[Your Email]">
+                <!--- Favorite Professionals (user has chosen this)-->
 
-                        <label for="phone">Phone Number</label>
-                        <input type="text" id="phone" placeholder="[Your Phone]">
+                <div class="dashboard-grid">
+                <div class="dashboard-section">
+                    <h3>Favorite Professionals</h3>
 
-                        <label for="location">Location</label>
-                        <input type="text" id="location" placeholder="[Your City]">
+                    <div class="cards-row">
+                    <div class="dashboard-card">
+                        <h4>Jane Doe</h4>
+                        <p>Hair Stylist</p>
+                        <a href="portfolio.html" class="bubble-link">View Portfolio</a>
+                    </div>
 
-                        <button type="button" class="btn">Save Changes</button>
-                    </form>
-
-
+                    <div class="dashboard-card">
+                        <h4>Mary Smith</h4>
+                        <p>Makeup Artist</p>
+                        <a href="portfolio.html" class="bubble-link">View Portfolio</a>
+                    </div>
                 </div>
+                </div>
+
+                <!-- Review Section (user's written reviews) -->
+                <div class="dashboard-section">
+                    <h3>My Reviews</h3>
+                
+                    <div class="cards-row">
+                    <div class="dashboard-card">
+                        <h4>Review for Anna Lee</h4>
+                        <p>★★★★★</p>
+                        <p>"Loved my manicure! Very professional and friendly."</p>
+                    </div>
+                
+                    <div class="dashboard-card">
+                        <h4>Review for Jane Doe</h4>
+                        <p>★★★★☆</p>
+                        <p>"Great haircut, will definitely book again!"</p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="dashboard-section">
+                    <h3>Booked Appointments</h3>
+                
+                     <div class="cards-row">
+
+                    <div class="dashboard-card">
+                        <h4>Mary Smith</h4>
+                        <p>Makeup Appointment</p>
+                        <p>Date: March 20, 2026</p>
+                        <p>Time: 2:00 PM</p>
+                        <span class="appointment-status">Upcoming</span>
+                    </div>
+                
+                    <div class="dashboard-card">
+                        <h4>Anna Lee</h4>
+                        <p>Manicure Appointment</p>
+                        <p>Date: February 10, 2026</p>
+                        <p>Time: 11:00 AM</p>
+                        <span class="appointment-status completed">Completed</span>
+                    </div>
+                </div>
+            </div>
+
+            </div>
     </section>
 
 </body>
