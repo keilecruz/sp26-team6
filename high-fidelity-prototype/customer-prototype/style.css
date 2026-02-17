@@ -154,3 +154,75 @@ nav{
 .signup-section p a:hover {
     text-decoration: underline;
 }
+
+/*-------- login.html---------*/
+
+.login-section{
+    padding: 80px 20px;
+    background: #f9f9fb;
+}
+
+.login-section h2{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #d46a92;
+}
+
+.login-section form{
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+}
+
+.login-section form label{
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.login-section form input{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.login-section form input:focus {
+    outline: none;
+    border-color: #d46a92;
+}
+
+.login-section form .btn{
+   width: 100%;
+    padding: 12px;
+    font-weight: 600;
+    background: #d46a92;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer; 
+}
+
+.login-section form .btn:hover{
+     background: #b8577c;
+}
+
+.login-section p{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-section p a{
+    color: #d46a92;
+    text-decoration: none;
+}
+
+.login-section p a:hover{
+    text-decoration: underline;
+}
