@@ -47,6 +47,41 @@ nav{
 }
 
 .logo{
-    height: 60px;
+    height: 80px;
     width: auto;
 }
+
+.text-box{
+    position: relative;
+    z-index: 2; /* makes text appear above overlay */
+    color: white; /* text visible on dark overlay */
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 220px;
+}
+
+.text-box h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.text-box p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.text-box .btn {
+    padding: 12px 25px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: #d46a92;
+    color: white;
+    text-decoration: none;
+}
+
+.text-box .btn:hover {
+    background: #b8577c;
+}
+
+/*-------- signup.html---------*/
+
