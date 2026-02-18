@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlowUp Booking</title>
     <link rel="stylesheet" href="style.css">
 
-    
+
 </head>
+
 <body>
-    
-  <!--- Top Header-->
+
+    <!--- Top Header-->
     <header class="top-header">
         <nav>
             <img src="../../photos/logo.jpg" alt="GlowUp logo" class="logo">
@@ -24,12 +26,40 @@
         </nav>
     </header>
 
-<section>
+    <section class="booking-section">
+        <div class="booking-box">
 
-    
-</section>
+            <h2>Book Appointment</h2>
+            <p>Professional: <strong>Jane Doe</strong></p>
+
+            <form>
+
+                <label>Select Service</label>
+                <select>
+                    <option>Haircut</option>
+                    <option>Hair Styling</option>
+                    <option>Full Makeup</option>
+                    <option>Manicure</option>
+                </select>
+
+                <label>Select Date</label>
+                <input type="date">
+
+                <label>Select Time</label>
+                <input type="time">
+
+                <label>Additional Notes</label>
+                <textarea rows="4" placeholder="Any special requests?"></textarea>
+
+                <button type="submit" class="confirm-btn">Confirm Booking</button>
+
+            </form>
+
+        </div>
+    </section>
 
 
 
 </body>
+
 </html>
