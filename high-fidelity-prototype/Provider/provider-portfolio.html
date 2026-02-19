@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Portfolio - GlowUp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Top header -->
+    <header class="top-header">
+        <nav class="nav-bar">
+            <div class="brand">
+                <a href="provider-dashboard.html">
+                    <img src="image/logo.jpg" alt="GlowUp logo" class="logo-img">
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <a href="provider-portfolio.html">Portfolio</a>
+                <a href="provider-bookings.html">Bookings</a>
+                <a href="provider-login.html" class="btn">Log out</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page content -->
+    <section class="simple-page">
+        <div class="simple-box">
+
+            <!-- Profile header (more attention grabbing) -->
+            <div class="profile-header">
+                <img class="avatar" src="image/provider.png" alt="Profile photo">
+                <div>
+                    <h2 class="profile-name">LuxeGlow Studio</h2>
+                    <p class="profile-meta">
+                        <span class="stars" data-rating="4.9"></span> 4.9 (52 reviews) • Greensboro, NC
+                    </p>
+
+                    <p class="profile-bio">
+                        LuxeGlow Studio is a modern beauty space specializing in soft glam makeup, bridal artistry, and elegant hair styling, 
+                        designed to create confident and radiant looks for every special moment.
+                    </p>
+
+                    <button class="btn" type="button"
+                        onclick="alert('Prototype only: Edit Portfolio not implemented yet.')">
+                        Edit Portfolio
+                    </button>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <h3 class="section-title">Services</h3>
+            <div class="service-cards">
+                <div class="service-card">
+                    <p class="service-title">Soft Glam Makeup</p>
+                    <p class="service-sub">60 min • Includes lashes</p>
+                    <p class="service-price">$60</p>
+                </div>
+
+                <div class="service-card">
+                    <p class="service-title">Bridal Makeup</p>
+                    <p class="service-sub">90 min • Long wear</p>
+                    <p class="service-price">$120</p>
+                </div>
+
+                <div class="service-card">
+                    <p class="service-title">Hair Styling (Blowout)</p>
+                    <p class="service-sub">45 min • Volume finish</p>
+                    <p class="service-price">$45</p>
+                </div>
+
+                <div class="service-card">
+                    <p class="service-title">Natural Everyday Makeup</p>
+                    <p class="service-sub">45 min • Light coverage</p>
+                    <p class="service-price">$40</p>
+                </div>
+            </div>
+
+            <!-- Work gallery -->
+            <h3 class="section-title">Work Gallery</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300" alt="Bridal look example">
+                    <p class="gallery-cap">Bridal Look • Warm neutral glam</p>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300" alt="Soft glam example">
+                    <p class="gallery-cap">Soft Glam • Glowy base + nude lip</p>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300" alt="Hair styling example">
+                    <p class="gallery-cap">Hair Styling • Volume blowout</p>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300" alt="Makeup closeup example">
+                    <p class="gallery-cap">Close-up • Smooth base + liner</p>
+                </div>
+            </div>
+
+            <!-- Reviews -->
+            <h3 class="section-title">Recent Reviews</h3>
+            <div class="review">
+                <p class="review-name">Hannah • <span class="stars" data-rating="5"></span> 5.0</p>
+                <p class="review-text">“Super professional and the makeup lasted all day!”</p>
+            </div>
+
+            <div class="review">
+                <p class="review-name">Sophia • <span class="stars" data-rating="5"></span> 5.0</p>
+                <p class="review-text">“Amazing service and great vibe. Loved my hair!”</p>
+            </div>
+
+            <div class="review">
+                <p class="review-name">Riya • <span class="stars" data-rating="4"></span> 4.0</p>
+                <p class="review-text">“Beautiful results. Would book again.”</p>
+            </div>
+
+            <a class="back" href="provider-dashboard.html">← Back to Dashboard</a>
+        </div>
+    </section>
+    <script>
+        document.querySelectorAll('.stars').forEach(star => {
+            const rating = parseFloat(star.dataset.rating) || 0;
+            star.style.setProperty('--rating', rating);
+            
+        });
+    </script>
+
+
+</body>
+</html>

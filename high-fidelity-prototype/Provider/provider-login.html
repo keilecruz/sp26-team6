@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowUp Provider Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Top header -->
+    <header class="top-header">
+        <nav class="nav-bar">
+
+            <!-- LEFT: GlowUp logo-->
+            <div class="brand">
+                <a href="provider-dashboard.html">
+                    <img src="image/logo.jpg" alt="GlowUp logo" class="logo-img">
+                </a>
+            </div>
+
+            <!-- RIGHT: navigation buttons -->
+            <div class="nav-links">
+                <a href="provider-login.html">Log in</a>
+                <a href="provider-dashboard.html" class="btn">Dashboard</a>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <section class="login-section">
+        <div class="container">
+
+            <form onsubmit="event.preventDefault(); location.href='provider-dashboard.html'">
+                <h2>Welcome Back, Provider!</h2>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+
+                <button type="submit" class="btn">Log In</button>
+            </form>
+
+            <p>Don't have an account? <a href="provider-signup.html">Sign Up</a></p>
+
+        </div>
+    </section>
+
+</body>
+</html>
