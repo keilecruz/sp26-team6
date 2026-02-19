@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowUp Edit Profile</title>
+    <link rel="stylesheet" href="style.css">
+
+<!--- Users can edit their profile-->
+
+</head>
+<body>
+    <!--- Top Header-->
+    <header class="top-header">
+        <nav>
+            <img src="../../photos/logo.jpg" alt="GlowUp logo" class="logo">
+
+            <div class="nav-links">
+                <a href="browse.html"> Browse Professional</a>
+                <a href="#profile"> Profile </a>
+                <a href="login.html" class="btn"> Log Out </a>
+
+            </div>
+        </nav>
+    </header>
+
+    <section class="edit-profile-section">
+
+    <div class="edit-profile-container">
+
+        <h2>Edit Your Profile</h2>
+
+        <!-- Profile Image -->
+        <div class="profile-image-section">
+            <img src="../../photos/profilepic.png" alt="Profile Picture" class="profile-preview">
+            <input type="file" id="file-upload" hidden>
+        
+            <label for="file-upload" class="bubble-btn upload-btn">
+                Change Profile Photo
+            </label>
+            
+        </div>
+
+        <!-- Edit Form -->
+        <form class="edit-profile-form">
+
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your full name">
+
+            <label>Email Address</label>
+            <input type="email" placeholder="Enter your email">
+
+            <label>Phone Number</label>
+            <input type="tel" placeholder="Enter your phone number">
+
+            <label>Beauty Preferences</label>
+            <select>
+                <option>Select Preference</option>
+                <option>Hair Services</option>
+                <option>Makeup Services</option>
+                <option>Nail Services</option>
+                <option>All Services</option>
+            </select>
+
+            <div class="form-buttons">
+                <a href="dashboard.html" class="bubble-btn">Cancel</a>
+                <button type="submit" class="bubble-btn">Save Changes</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+</body>
+</html>

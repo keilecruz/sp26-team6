@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowUp SignUp</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!--- This is for user/professional to sign up-->
+    
+</head>
+
+<body>
+
+    <!--- Top Header-->
+    <header class="top-header">
+        <nav>
+            <img src="../../photos/logo.jpg" alt="GlowUp logo" class="logo">
+
+            <div class="nav-links">
+                <a href="login.html"> Log in</a>
+                <a href="index.html" class="btn"> Home </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!--- Signup Selection (user puts in information) -->
+
+    <section class="signup-section">
+        <div class="container">
+            <h2> Create your Account </h2>
+            <form action="#" method="POST">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name">
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+
+                <label for="role">I am a:</label>
+                <select id="role" name="role">
+                    <option value="client">Client</option>
+                    <option value="professional">Professional</option>
+                </select>
+
+                <button type="button" class="btn" onclick="location.href='dashboard.html'">Sign Up</button>
+
+            </form>
+
+        </div>
+
+        <p> Already have an account? <a href="login.html"> Log in</a></p>
+    </section>
+
+
+</body>
+
+</html>
