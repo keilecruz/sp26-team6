@@ -501,6 +501,65 @@ nav{
     margin-top: 20px;
 }
 
+/*-------- new ---------*/
+
+.portfolio-add-review {
+    margin-bottom: 40px;
+    padding: 25px;
+    border: 1px solid #f0d9e0;
+    border-radius: 12px;
+    background-color: #fff0f5;
+}
+
+.portfolio-add-review h3 {
+    color: #d46a92;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.review-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 500;
+    color: #555;
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #e0c6d1;
+    border-radius: 10px;
+    outline: none;
+    font-size: 1rem;
+    resize: none;
+}
+
+.review-form input:focus, .review-form select:focus, .review-form textarea:focus {
+    border-color: #d46a92;
+}
+
+.review-form .btn-submit {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #d46a92;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.review-form .btn-submit:hover {
+    background-color: #b84f77;
+}
+
 /*-------- browse.html---------*/
 
 .browse-section {

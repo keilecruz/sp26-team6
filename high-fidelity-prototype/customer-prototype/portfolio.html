@@ -43,6 +43,31 @@
             <img src="../../photos/hair6.jpg" alt="Work Example">
         </div>
 
+        <!-- Customer review submission -->
+        <div class="portfolio-add-review">
+            <h3>Write a Review</h3>
+            <form action="#" method="POST" class="review-form">
+                <label for="reviewer-name">Your Name</label>
+                <input type="text" id="reviewer-name" name="reviewer-name" placeholder="Enter your name" required>
+        
+                <label for="review-rating">Rating</label>
+                <select id="review-rating" name="review-rating" required>
+                    <option value="">Select rating</option>
+                    <option value="5">★★★★★</option>
+                    <option value="4">★★★★☆</option>
+                    <option value="3">★★★☆☆</option>
+                    <option value="2">★★☆☆☆</option>
+                    <option value="1">★☆☆☆☆</option>
+                </select>
+        
+                <label for="review-text">Your Review</label>
+                <textarea id="review-text" name="review-text" rows="4" placeholder="Write your review here..."
+                    required></textarea>
+        
+                <button type="submit" class="btn btn-submit">Submit Review</button>
+            </form>
+        </div>
+
         <!-- Reviews Preview -->
         <div class="portfolio-reviews">
             <h3>Customer Reviews</h3>
@@ -63,6 +88,7 @@
         </div>
 
     </section>
+
 
 
 </body>
