@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowUp Provider Sign Up</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Top header -->
+    <header class="top-header">
+        <nav class="nav-bar">
+
+            <!-- LEFT: logo-->
+            <div class="brand">
+                <a href="provider-dashboard.html">
+                    <img src="image/logo.jpg" alt="GlowUp logo" class="logo-img">
+                </a>
+            </div>
+
+
+            <!-- RIGHT: navigation buttons -->
+            <div class="nav-links">
+                <a href="provider-login.html">Log in</a>
+                <a href="provider-dashboard.html" class="btn">Dashboard</a>
+            </div>
+
+        </nav>
+    </header>
+
+
+
+    <!-- Sign Up Section -->
+    <section class="signup-section">
+        <div class="container">
+
+            <form onsubmit="event.preventDefault(); location.href='provider-dashboard.html'">
+
+                <h2>Create Your Account</h2>
+
+                <!-- Name -->
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your full name">
+
+                <!-- Email -->
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email">
+
+                <!-- Password -->
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Create a password">
+
+                <!-- Role selection -->
+                <label for="role">I want to join as:</label>
+                <select id="role">
+                    <option value="customer">Customer</option>
+                    <option value="provider">Provider</option>
+                </select>
+
+                <!-- Sign Up button → goes to provider dashboard -->
+                <button type="submit" class="btn">Sign Up</button>
+
+            </form>
+
+            <!-- link to login -->
+            <p>Already have an account?  
+                <a href="provider-login.html">Log in here</a>
+            </p>
+
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provider Dashboard - GlowUp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Top header -->
+    <header class="top-header">
+        <nav class="nav-bar">
+            <!-- Left: logo -->
+            <div class="brand">
+                <a href="provider-dashboard.html">
+                    <img src="image/logo.jpg" alt="GlowUp logo" class="logo-img">
+                </a>
+            </div>
+
+            
+            <div class="nav-links">
+                <a href="provider-portfolio.html">Portfolio</a>
+                <a href="provider-bookings.html">Bookings</a>
+                <a href="provider-login.html" class="btn">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+        <div class="container">
+
+            <h2>Welcome back!</h2>
+            <p class="muted">Here’s your activity for today.</p>
+
+            <!-- Quick Stats -->
+            <div class="cards-box">
+                <h3>Quick Stats</h3>
+                <div class="cards">
+                    <div class="stat-card">
+                        <p class="stat-label">Total Bookings</p>
+                        <p class="stat-value">18</p>
+                        <p class="stat-note">+3 this week</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <p class="stat-label">Rating</p>
+                        <p class="stat-value">
+                            <span class="stars" style="--rating: 4.9;"></span>
+                            <span class="rating-num">4.9</span>
+                        </p>
+
+                        <p class="stat-note">Last 30 days</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <p class="stat-label">Earnings</p>
+                        <p class="stat-value">$620</p>
+                        <p class="stat-note">This month</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Two-column layout -->
+            <div class="grid-2">
+
+                <!-- Today's Schedule -->
+                <div class="cards-box">
+                    <h3>Today’s Schedule</h3>
+
+                    <div class="schedule-item">
+                        <div>
+                            <p class="schedule-title">Hair Styling (Blowout)</p>
+                            <p class="muted small">Client: Ayesha • Location: Studio A</p>
+                        </div>
+                        <span class="pill">10:30 AM</span>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div>
+                            <p class="schedule-title">Soft Glam Makeup</p>
+                            <p class="muted small">Client: Nadia • Location: On-site</p>
+                        </div>
+                        <span class="pill">1:00 PM</span>
+                    </div>
+
+                    <div class="schedule-item">
+                        <div>
+                            <p class="schedule-title">Nail Art (French Tips)</p>
+                            <p class="muted small">Client: Sara • Location: Studio B</p>
+                        </div>
+                        <span class="pill">4:15 PM</span>
+                    </div>
+
+                    <p class="small">
+                        <a href="provider-bookings.html">View all bookings →</a>
+                    </p>
+                </div>
+
+                <!-- Recent Reviews -->
+                <div class="cards-box">
+                    <h3>Recent Reviews</h3>
+
+                    <div class="review">
+                        <p class="review-name">
+                            Hannah <span class="muted">•</span> <span class="stars" style="--rating: 5;"></span>
+                            <span class="muted">5.0</span>
+                        </p>
+
+                        <p class="review-text">“Super professional and the makeup lasted all day. Loved it!”</p>
+                    </div>
+
+                    <div class="review">
+                        <p class="review-name">
+                            Sophia <span class="muted">•</span> <span class="stars" style="--rating: 5;"></span>
+                            <span class="muted">5.0</span>
+                        </p>
+
+                        <p class="review-text">“Clean work, great vibe, and my hair turned out amazing.”</p>
+                    </div>
+
+                    <div class="review">
+                        <p class="review-name">
+                            Riya <span class="muted">•</span> <span class="stars" style="--rating: 4;"></span>
+                            <span class="muted">4.0</span>
+                        </p>
+
+                        <p class="review-text">“Nails were beautiful. Would book again for sure.”</p>
+                    </div>
+
+                    
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
