@@ -475,9 +475,9 @@ nav{
 
 .portfolio-gallery img {
     width: 100%;
-    border-radius: 12px;
+    border-radius: 17px;
     object-fit: cover;
-    height: 220px;
+    height: 240px;
     transition: 0.3s ease;
 }
 
@@ -501,7 +501,6 @@ nav{
     margin-top: 20px;
 }
 
-/*-------- new ---------*/
 
 .portfolio-add-review {
     margin-bottom: 40px;
