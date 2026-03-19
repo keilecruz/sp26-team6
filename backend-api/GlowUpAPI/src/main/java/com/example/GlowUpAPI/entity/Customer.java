@@ -1,6 +1,6 @@
 package com.example.GlowUpAPI.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
