@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "GlowUpApiApplication",
+            "request": "launch",
+            "mainClass": "com.example.GlowUpAPI.GlowUpApiApplication",
+            "projectName": "GlowUpAPI"
+        },
+        {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
