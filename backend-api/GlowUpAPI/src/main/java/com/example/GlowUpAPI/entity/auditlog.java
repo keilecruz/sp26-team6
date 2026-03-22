@@ -7,18 +7,19 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
-@Table(name = "Audit_logs")
+@Table(name = "audit_logs")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class AuditLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long logId;
 
+    // Link to Admin
     @ManyToOne
     @JoinColumn(name = "admin_id", nullable = false)
     @JsonIgnoreProperties("auditLogs")
