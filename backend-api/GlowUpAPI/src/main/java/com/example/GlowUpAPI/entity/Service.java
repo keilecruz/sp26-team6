@@ -17,7 +17,7 @@ public class Service {
     private Long serviceId;
 
     @Column(nullable = false)
-    private String name; 
+    private String name;
 
     @Column(nullable = false)
     private Double price;
@@ -25,7 +25,7 @@ public class Service {
     @Column(length = 500)
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "beauty_id")
+    @ManyToOne
+    @JoinColumn(name = "beauty_id", nullable = false)
     private Beauty beauty;
 }

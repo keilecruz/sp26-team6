@@ -2,8 +2,7 @@ package com.example.GlowUpAPI.controller;
 
 import com.example.GlowUpAPI.entity.Customer;
 import com.example.GlowUpAPI.service.CustomerService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
