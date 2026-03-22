@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.List;
 
 @Entity
 @Table(name = "admins")
@@ -18,7 +21,10 @@ public class Admin extends User {
     @Column(nullable = false)
     private String adminName;
 
-    // Optional: role auto-set for safety
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("admin")
+    private List<AuditLog> auditLogs;
+
     @PrePersist
     public void setRole() {
         this.setRole(Role.ADMIN);
