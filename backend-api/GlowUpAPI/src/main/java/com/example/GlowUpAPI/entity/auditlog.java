@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class AuditLog {
+public class auditLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
