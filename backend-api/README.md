@@ -706,12 +706,16 @@ The API endpoints are meant to follow these SRS use cases :
 | **US-CUST-003** | Write and view reviews for services | `POST /reviews`, `GET /reviews/{id}`, `GET /reviews` |
 | **US-CUST-004** | View beauty professionals | `GET /beauties`, `GET /beauties/{id}` |
 
+| Use Case | Description | Related Endpoints |
+|----------|-------------|-------------------|
 | **US-BEAUTY-001** | Register & manage beauty profile | `POST /beauties`, `PUT /beauties/{id}`, `GET /beauties/{id}`, `DELETE /beauties/{id}` |
 | **US-BEAUTY-002** | Create and manage services | `POST /services`, `PUT /services/{id}`, `DELETE /services/{id}`, `GET /services` |
 | **US-BEAUTY-003** | Manage portfolio | `POST /portfolios`, `PUT /portfolios/{id}`, `DELETE /portfolios/{id}`, `GET /portfolios` |
 | **US-BEAUTY-004** | Set and manage availability | `POST /availabilities`, `GET /availabilities`, `GET /availabilities/beauty/{beautyId}`, `DELETE /availabilities/{id}` |
 | **US-BEAUTY-005** | Respond to reviews | `PUT /reviews/{id}` |
 
+| Use Case | Description | Related Endpoints |
+|----------|-------------|-------------------|
 | **US-ADMIN-001** | Manage users (view/update/delete) | `GET /customers`, `GET /beauties`, `GET /admins`, `DELETE /customers/{id}`, `DELETE /beauties/{id}`, `DELETE /admins/{id}` |
 | **US-ADMIN-002** | Moderate services | `GET /services`, `DELETE /services/{id}` |
 | **US-ADMIN-003** | Moderate reviews | `GET /reviews`, `DELETE /reviews/{id}` |
