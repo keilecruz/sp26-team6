@@ -28,4 +28,8 @@ public class Service {
     @ManyToOne
     @JoinColumn(name = "beauty_id", nullable = false)
     private Beauty beauty;
+
+    @ManyToOne
+    @JoinColumn(name = "portfolio_id")
+    private Portfolio portfolio;
 }
