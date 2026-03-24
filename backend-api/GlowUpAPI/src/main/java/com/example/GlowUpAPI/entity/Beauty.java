@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @PrimaryKeyJoinColumn(name = "beauty_id")
+
 public class Beauty extends User {
     
     @Column(nullable = false)
