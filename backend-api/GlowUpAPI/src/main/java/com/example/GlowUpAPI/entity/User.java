@@ -29,7 +29,7 @@ public class User {
     
      public enum Role {
         CUSTOMER,
-        PROVIDER,
+        BEAUTY,
         ADMIN
     }
 }
