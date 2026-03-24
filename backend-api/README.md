@@ -39,8 +39,8 @@ This API supports three main roles
 
 | Role | Description | Primary Responsibilities |
 |------|-------------|-------------------------|
-| **CUSTOMER** | Consumer of beauty services, Browse portfolio, reviews, select service availability |
-| **BEAUTY-PROFESSIONAL** | Provider for beauty services, Manage portfolio/availability, Respond to reviews |
+| **CUSTOMER** | Consumer of beauty services | Browse portfolio, reviews, select service availability |
+| **BEAUTY-PROFESSIONAL** | Provider for beauty services | Manage portfolio/availability, Respond to reviews |
 | **ADMIN** | Platform administrator | Manage access, moderate content, view analytics |
 
 ---
