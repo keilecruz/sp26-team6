@@ -264,6 +264,7 @@ GET/services
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 #### Get services by ID
@@ -289,6 +290,7 @@ PUT/services/{id}
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 #### Deleting a service with id
@@ -301,6 +303,7 @@ DELETE/services/{id}
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 ### Review-Management
@@ -341,6 +344,7 @@ Content-Type: application/json
 ```
 
 **Status Code:** `201 Created`
+
 ---
 
 #### Get all reviews
@@ -353,6 +357,7 @@ GET/reviews
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 #### Get review by ID
@@ -365,6 +370,7 @@ GET/reviews/{id}
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 #### Update review 
@@ -380,6 +386,7 @@ GET/reviews/{id}
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 #### Delete review
@@ -393,6 +400,7 @@ DELETE/reviews/{id}
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 
@@ -428,6 +436,7 @@ Content-Type: application/json
 ```
 
 **Status Code:** `201 Created`
+
 ---
 
 #### Get all portfolios
@@ -441,6 +450,7 @@ GET/portfolios
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 #### View portfolio by ID 
@@ -468,6 +478,7 @@ PUT/portfolios/{id}
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 #### Delete portfolio
@@ -481,6 +492,7 @@ DELETE/portfolios/{id}
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 ### Availability-Management
@@ -515,6 +527,7 @@ Content-Type: application/json
 ```
 
 **Status Code:** `201 Created`
+
 ---
 
 #### Get all availabilities
@@ -528,6 +541,7 @@ GET/portfolios
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 #### Getting availability by beauty
@@ -541,6 +555,7 @@ GET /availabilities/beauty/{beautyId}
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 #### Deleting availability
@@ -554,6 +569,7 @@ DELETE /availabilities/{id}
 ```
 
 **Status Code:** `200 OK` or `404 Not Found`
+
 ---
 
 ### Admin-Management
@@ -584,6 +600,7 @@ Content-Type: application/json
 ```
 
 **Status Code:** `201 Created`
+
 ---
 
 #### Getting all admins
