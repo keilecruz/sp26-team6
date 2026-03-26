@@ -10,14 +10,14 @@
 2. [User Roles](#2-user-roles)
 3. [UML Class Diagram](#3-uml-class-diagram)
 4. [API Endpoints](#4-api-endpoints)
-   - [Customer Management](#customer-management)
-   - [Beauty (Provider) Management](#beauty-provider-management)
-   - [Service Management](#service-management)
-   - [Portfolio Management](#portfolio-management)
-   - [Availability Management](#availability-management)
-   - [Review Management](#review-management)
-   - [Admin Management](#admin-management)
-   - [Audit Logs](#audit-logs)
+   - [Customer Management](#Customer-Management)
+   - [Beauty (Provider) Management](#Professional-Management)
+   - [Service Management](#Service-Management)
+   - [Portfolio Management](#Portfolio-Management)
+   - [Availability Management](#availability-Management)
+   - [Review Management](#Review-Management)
+   - [Admin Management](#Admin-Management)
+   - [Audit Logs](#AuditLog-Management)
 5. [Use Case Mapping](#5-use-case-mapping)
 
 ---
@@ -52,7 +52,7 @@ This API supports three main roles
 
 These use-cases are use specifically with the endpoints ('/customer', '/beauty', '/admin')
 
-### Customer Use Cases
+### Customer-Management
 #### Create Customer
 
 **Endpoint:** `POST /customers`
@@ -147,7 +147,7 @@ DELETE /customers/'{id}'
 
 --- 
 
-### Review Management
+### Professional-Management
 
 #### Creating a professional account
 **Endpoint:** `POST /beauties`
@@ -217,7 +217,7 @@ DELETE /beauties/{id}
 **Status Code:** `200 OK` or `404 Not Found`
 
 ---
-### Service Management
+### Service-Management
 
 #### Create Beauty account
 **Endpoint:** `POST /services`
@@ -303,7 +303,7 @@ DELETE/services/{id}
 **Status Code:** `200 OK` or `404 Not Found`
 ---
 
-### Review Management
+### Review-Management
 
 #### Creating a review post
 **Endpoint:** `POST /reviews`
@@ -396,7 +396,7 @@ DELETE/reviews/{id}
 ---
 
 
-### Portfolio management
+### Portfolio-Management
 
 #### Creating a portfolio
 **Endpoint:** `POST /portfolios`
@@ -443,7 +443,7 @@ GET/portfolios
 **Status Code:** `200 OK` or `404 Not Found`
 ---
 
-#### Delete availability 
+#### View portfolio by ID 
 **Endpoint:** `GET/portfolios/{id}`
 **Use Case:** US-PORTFOLIO-003 (View Portfolio by ID)
 **Description:** Getting a specific portfolio with id
@@ -483,7 +483,7 @@ DELETE/portfolios/{id}
 **Status Code:** `200 OK` or `404 Not Found`
 ---
 
-### Availability management
+### Availability-Management
 
 #### Creating a availability
 **Endpoint:** `POST /availabilities`
@@ -556,7 +556,7 @@ DELETE /availabilities/{id}
 **Status Code:** `200 OK` or `404 Not Found`
 ---
 
-### Admin management
+### Admin-Management
 
 #### Creating an admin
 **Endpoint:** `POST /admins`
@@ -628,7 +628,7 @@ Delete /admins/{id}
 
 
 ---
-### AuditLog management
+### AuditLog-Management
 
 #### Creating an Auditlog
 **Endpoint:** `POST /auditlogs`
