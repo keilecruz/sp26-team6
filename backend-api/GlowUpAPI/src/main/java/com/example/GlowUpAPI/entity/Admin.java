@@ -26,7 +26,7 @@ public class Admin extends User {
     private List<AuditLog> auditLogs;
 
     @PrePersist
-    public void setRole() {
-        this.setRole(Role.ADMIN);
+    public void assignDefaultRole() {
+        super.setRole(Role.ADMIN);
     }
 }
