@@ -14,10 +14,10 @@ public class Availability {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String date;   // you can upgrade to LocalDate later
-    private String time;   // or LocalTime
+    private String date;   
+    private String time;   
 
     @ManyToOne
-    @JoinColumn(name = "beauty_id")
+    @JoinColumn(name = "beauty_id",nullable = false)
     private Beauty beauty;
 }

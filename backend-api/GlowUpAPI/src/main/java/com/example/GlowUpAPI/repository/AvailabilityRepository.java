@@ -1,8 +1,9 @@
 package com.example.GlowUpAPI.repository;
 
-import com.example.GlowUpAPI.entity.Beauty;
+import com.example.GlowUpAPI.entity.Availability;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
 @Repository
-public interface BeautyRepository extends JpaRepository<Beauty, Long> {
+public interface AvailabilityRepository extends JpaRepository<Availability, Long> {
 }

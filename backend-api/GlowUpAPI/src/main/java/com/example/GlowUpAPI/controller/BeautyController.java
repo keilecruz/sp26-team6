@@ -23,7 +23,7 @@ public class BeautyController {
         Beauty createdBeauty = beautyService.createBeauty(beauty);
         return new ResponseEntity<>(createdBeauty, HttpStatus.CREATED);
     }
-
+    
     // get all Beauty professionals
     @GetMapping
     public ResponseEntity<List<Beauty>> getAllBeauties() {
