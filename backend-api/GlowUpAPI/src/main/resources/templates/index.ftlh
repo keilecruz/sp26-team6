@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowUp</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+<!---- Homepage for client and professional -->
+
+</head>
+
+<body>
+
+    <section class="topheader">
+
+        <!----   Navigation -->
+        <nav>
+            <img src="../../photos/logo.jpg" alt="GlowUp logo" class="logo">
+
+            <div class="nav-links">
+                <a href="login.html"> Log in</a>
+                <a href="signup.html" class="btn"> Sign up </a>
+
+
+            </div>
+        </nav>
+    </section>
+
+    <!--  Text info -->
+    <section class="hero">
+
+        <div class="text-box">
+            <h1>GLOWUP</h1>
+            <p> Beauty & Grooming Made Simple </p>
+            <a href="signup.html" class="btn"> Click here to register</a>
+        </div>
+
+
+
+    </section>
+
+
+</body>
+
+</html>
