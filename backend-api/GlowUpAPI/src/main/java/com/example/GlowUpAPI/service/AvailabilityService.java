@@ -5,6 +5,7 @@ import com.example.GlowUpAPI.entity.Beauty;
 import com.example.GlowUpAPI.repository.AvailabilityRepository;
 import com.example.GlowUpAPI.repository.BeautyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class AvailabilityService {
     private BeautyRepository beautyRepository;
 
     public Availability createAvailability(Availability availability) {
-        Long beautyId = availability.getBeauty().getUserId();
+        long beautyId = availability.getBeauty().getUserId();
 
         Beauty beauty = beautyRepository.findById(beautyId)
                 .orElseThrow(() -> new RuntimeException("Beauty not found"));
@@ -34,7 +35,7 @@ public class AvailabilityService {
         return availabilityRepository.findAll();
     }
 
-    public Optional<Availability> getAvailabilityById(Long id) {
+    public Optional<Availability> getAvailabilityById(@NonNull Long id) {
         return availabilityRepository.findById(id);
     }
 
@@ -44,7 +45,7 @@ public class AvailabilityService {
                 .toList();
     }
 
-    public Availability updateAvailability(Long id, Availability availabilityDetails) {
+    public Availability updateAvailability(@NonNull Long id, Availability availabilityDetails) {
         Availability availability = availabilityRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Availability not found"));
 
@@ -52,7 +53,7 @@ public class AvailabilityService {
         availability.setTime(availabilityDetails.getTime());
 
         if (availabilityDetails.getBeauty() != null) {
-            Long beautyId = availabilityDetails.getBeauty().getUserId();
+            long beautyId = availabilityDetails.getBeauty().getUserId();
 
             Beauty beauty = beautyRepository.findById(beautyId)
                     .orElseThrow(() -> new RuntimeException("Beauty not found"));
@@ -63,7 +64,7 @@ public class AvailabilityService {
         return availabilityRepository.save(availability);
     }
 
-    public void deleteAvailability(Long id) {
+    public void deleteAvailability(@NonNull Long id) {
         availabilityRepository.deleteById(id);
     }
 }

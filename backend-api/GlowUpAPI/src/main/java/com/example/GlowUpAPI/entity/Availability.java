@@ -14,9 +14,12 @@ public class Availability {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String date;   
-    private String time;   
+    @Column(nullable = false)
+    private String date;
 
+    @Column(nullable = false)
+    private String time;
+    
     @ManyToOne
     @JoinColumn(name = "beauty_id",nullable = false)
     private Beauty beauty;
