@@ -3,6 +3,7 @@ package com.example.GlowUpAPI.service;
 import com.example.GlowUpAPI.entity.Service;
 import com.example.GlowUpAPI.repository.ServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,15 +14,15 @@ public class ServiceService {
     @Autowired
     private ServiceRepository serviceRepository;
 
-    public Service createService(Service service) {
-        return serviceRepository.save(service);
+    public Service createService(@NonNull Service newservice) {
+        return serviceRepository.save(newservice);
     }
 
     public List<Service> getAllServices() {
         return serviceRepository.findAll();
     }
 
-    public Optional<Service> getServiceById(Long id) {
+    public Optional<Service> getServiceById(@NonNull Long id) {
         return serviceRepository.findById(id);
     }
 
@@ -32,7 +33,7 @@ public class ServiceService {
                 .toList();
     }
 
-    public Service updateService(Long id, Service serviceDetails) {
+    public Service updateService(@NonNull Long id, Service serviceDetails) {
         Service service = serviceRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Service not found"));
 
@@ -44,7 +45,7 @@ public class ServiceService {
         return serviceRepository.save(service);
     }
 
-    public void deleteService(Long id) {
+    public void deleteService(@NonNull Long id) {
         serviceRepository.deleteById(id);
     }
 }
