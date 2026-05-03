@@ -24,6 +24,12 @@ public class Beauty extends User {
 
     @Column
     private String specialty;
+    
+    @Column(length = 1000)
+    private String bio;
+
+    @Column
+    private String profileImage;
 
     @OneToMany(mappedBy = "beauty", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("beauty")
