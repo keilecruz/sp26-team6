@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Provider Dashboard</title>
+    <title>Provider Bookings</title>
 </head>
 <body>
-    <h1>Provider Dashboard</h1>
+    <h1>Provider Bookings Page</h1>
+    <p>This is the bookings page.</p>
 
-    <a href="/provider-profile">View Your Profile</a><br>
-    <a href="/provider-profile/edit">Edit Your Profile</a><br>
-    <a href="/services-page">Manage Services</a><br>
-    <a href="/availability-page">Manage Availability</a><br>
-    <a href="/provider-bookings">View All Bookings</a><br>
-    <a href="/provider-reviews">View All Reviews</a><br>
+    <a href="/provider-dashboard">Back to Dashboard</a>
 </body>
 </html>

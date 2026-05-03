@@ -32,7 +32,6 @@ public class LoginController {
                         @RequestParam String password,
                         HttpSession session) {
 
-        // 1. Check provider/admin accounts from User table
         Optional<User> userOptional = userService.getUserByEmail(email);
 
         if (userOptional.isPresent()) {
@@ -48,14 +47,15 @@ public class LoginController {
 
             if (user.getRole() == User.Role.BEAUTY) {
                 return "redirect:/provider-dashboard";
-            } else if (user.getRole() == User.Role.ADMIN) {
-                return "redirect:/admin/dashboard";
-            } else {
-                return "redirect:/dashboard";
             }
+
+            if (user.getRole() == User.Role.ADMIN) {
+                return "redirect:/admin/dashboard";
+            }
+
+            return "redirect:/dashboard";
         }
 
-        // 2. Check customer accounts from Customer table
         Customer customer = customerService.getCustomerByEmail(email)
                 .orElse(null);
 
@@ -69,12 +69,9 @@ public class LoginController {
 
         if ("ADMIN".equalsIgnoreCase(customer.getRole())) {
             return "redirect:/admin/dashboard";
-        } else if ("PROFESSIONAL".equalsIgnoreCase(customer.getRole())) {
-            session.setAttribute("loggedInUserId", customer.getId());
-            return "redirect:/provider-dashboard";
-        } else {
-            return "redirect:/dashboard";
         }
+
+        return "redirect:/dashboard";
     }
 
     @GetMapping("/logout")

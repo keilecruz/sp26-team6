@@ -3,61 +3,73 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>GlowUp SignUp</title>
-    <link rel="stylesheet" href="/style.css">
+    <title>GlowUp Sign Up</title>
+    <link rel="stylesheet" href="/signup.css">
 </head>
 
-<body>
+<body class="signup-page">
 
-    <header class="top-header">
-        <nav>
-            <img src="/photos/logo.jpg" class="logo">
+    <header class="signup-header">
+        <div class="signup-logo">
+            <img src="/photos/logo.png" alt="GlowUp Logo">
+        </div>
 
-            <div class="nav-links">
-                <a href="/login">Log in</a>
-                <a href="/index" class="btn">Home</a>
-            </div>
+        <nav class="signup-nav">
+            <a href="/index">Home</a>
+            <a href="#">About</a>
+            <a href="/login" class="signup-login-btn">Log In</a>
         </nav>
     </header>
 
-    <section class="signup-section">
+    <main class="signup-main">
 
-        <div class="container">
+        <section class="signup-card">
 
-            <h2>Create your Account</h2>
+            <h1>Create Account ✨</h1>
 
-            <form action="/signup" method="post">
+            <form action="/signup" method="post" class="signup-form">
 
-                <label>First Name</label>
-                <input type="text" name="firstName">
-
-                <label>Last Name</label>
-                <input type="text" name="lastName">
-
-                <label>Email</label>
-                <input type="email" name="email">
-
-                <label>Password</label>
-                <input type="password" name="password">
-
-                <label>Phone</label>
-                <input type="text" name="phone">
-
-                <select name="role">
+                <label>Account Type</label>
+                <select name="role" required>
                     <option value="CUSTOMER">Customer</option>
-                    <option value="PROFESSIONAL">Professional</option>
-                    <option value="ADMIN">Admin</option>
+                    <option value="BEAUTY">Beauty Professional</option>
                 </select>
 
-                <button type="submit" class="btn">Sign Up</button>
+                <label>First Name</label>
+                <input type="text" name="firstName" placeholder="Enter your first name">
+
+                <label>Last Name</label>
+                <input type="text" name="lastName" placeholder="Enter your last name">
+
+                <label>Email</label>
+                <input type="email" name="email" placeholder="you@example.com" required>
+
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Create a password" required>
+
+                <label>Phone</label>
+                <input type="text" name="phone" placeholder="Enter your phone number">
+
+                <label>Business Name</label>
+                <input type="text" name="businessName" placeholder="For providers only">
+
+                <button type="submit" class="signup-submit-btn">Sign Up</button>
 
             </form>
 
-            <p>Already have an account? <a href="/login">Log in</a></p>
+            <div class="signup-divider">
+                <span></span>
+                <p>or</p>
+                <span></span>
+            </div>
 
-        </div>
+            <p class="signup-bottom-text">
+                Already have an account? <a href="/login">Log in</a>
+            </p>
 
-    </section>
+        </section>
+
+    </main>
 
 </body>
 

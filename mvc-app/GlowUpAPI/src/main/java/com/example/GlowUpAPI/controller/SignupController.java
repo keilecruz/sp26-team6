@@ -43,6 +43,14 @@ public class SignupController {
         try {
             if ("BEAUTY".equalsIgnoreCase(role) || "PROFESSIONAL".equalsIgnoreCase(role)) {
 
+                if (businessName == null || businessName.isBlank()) {
+                    businessName = "New Beauty Professional";
+                }
+
+                if (specialty == null || specialty.isBlank()) {
+                    specialty = "Beauty Services";
+                }
+
                 Beauty beauty = new Beauty();
                 beauty.setEmail(email);
                 beauty.setPassword(password);
@@ -50,13 +58,21 @@ public class SignupController {
                 beauty.setBusinessName(businessName);
                 beauty.setSpecialty(specialty);
 
-                User saved = userService.createUser(beauty);
+                User savedUser = userService.createUser(beauty);
 
-                session.setAttribute("loggedInUserId", saved.getUserId());
-                session.setAttribute("loggedInRole", saved.getRole());
-                session.setAttribute("loggedInUser", saved);
+                session.setAttribute("loggedInUserId", savedUser.getUserId());
+                session.setAttribute("loggedInRole", savedUser.getRole());
+                session.setAttribute("loggedInUser", savedUser);
 
                 return "redirect:/provider-dashboard";
+            }
+
+            if (firstName == null || firstName.isBlank()) {
+                firstName = "New";
+            }
+
+            if (lastName == null || lastName.isBlank()) {
+                lastName = "Customer";
             }
 
             Customer customer = new Customer();
@@ -67,11 +83,11 @@ public class SignupController {
             customer.setPhone(phone);
             customer.setRole("CUSTOMER");
 
-            Customer saved = customerService.createCustomer(customer);
+            Customer savedCustomer = customerService.createCustomer(customer);
 
-            session.setAttribute("customer", saved);
-            session.setAttribute("loggedInCustomerId", saved.getId());
-            session.setAttribute("loggedInRole", saved.getRole());
+            session.setAttribute("customer", savedCustomer);
+            session.setAttribute("loggedInCustomerId", savedCustomer.getId());
+            session.setAttribute("loggedInRole", savedCustomer.getRole());
 
             return "redirect:/dashboard";
 
