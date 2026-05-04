@@ -69,8 +69,9 @@ body.login-page {
 
 .login-card h1 {
     text-align: center;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Times New Roman", serif;
     font-size: 42px;
+    font-weight: 600;
     color:   #ff45b4;
     margin-bottom: 34px;
 }

@@ -70,7 +70,10 @@
                 <p>Update your availability so clients know exactly when they can book you.</p>
             </div>
 
-            <a href="/services-page" class="provider-main-btn">Go to Services →</a>
+            <div class="provider-callout-buttons">
+                <a href="/provider-dashboard" class="provider-main-btn">← Back to Dashboard</a>
+                <a href="/services-page" class="provider-main-btn">Go to Services →</a>
+            </div>
         </div>
 
     </section>

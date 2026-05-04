@@ -80,7 +80,10 @@
                 <p>Update your services and availability so customers can book the right service at the right time.</p>
             </div>
 
-            <a href="/availability-page" class="provider-main-btn">Go to Availability →</a>
+            <div class="provider-callout-buttons">
+                <a href="/provider-dashboard" class="provider-main-btn">← Back to Dashboard</a>
+                <a href="/availability-page" class="provider-main-btn">Go to Availability →</a>
+            </div>
         </div>
 
     </section>
