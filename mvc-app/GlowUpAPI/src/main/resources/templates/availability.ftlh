@@ -3,76 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <title>Provider Availability - GlowUp</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/provider.css">
 </head>
-<body>
 
-<header class="top-header provider-top-header">
-    <nav class="nav-bar">
-        <div class="brand">
-            <img src="/image/logo.jpg" class="logo-banner" alt="GlowUp Logo">
-        </div>
+<body class="provider-page">
 
-        <div class="nav-links">
-            <a href="/services-page">Services</a>
-            <a href="/availability-page" class="active-link">Availability</a>
-            <a href="#">Profile</a>
-            <a href="#">Log out</a>
-        </div>
+<header class="provider-header">
+    <div class="provider-logo">
+        <img src="/photos/logo.png" alt="GlowUp Logo">
+    </div>
+
+    <nav class="provider-nav">
+        <a href="/provider-dashboard">Dashboard</a>
+        <a href="/provider-profile">Profile</a>
+        <a href="/logout" class="provider-nav-btn">Log Out</a>
     </nav>
 </header>
 
-<section class="provider-shell">
-    <div class="provider-panel">
+<main class="provider-main provider-main-top">
 
-        <div class="provider-hero">
-            <div class="provider-hero-left">
-                <h2>My Availability ✨</h2>
-                <p>Manage your schedule so clients can book easily.</p>
-            </div>
+    <section class="provider-content-card">
+
+        <div class="provider-page-title">
+            <h1>My Availability ✨</h1>
+            <p>Manage your schedule so clients can book easily.</p>
         </div>
 
-        <div class="provider-action">
-            <a href="/availability/create-form" class="btn">+ Create Availability</a>
+        <div class="provider-action-row">
+            <a href="/availability/create-form" class="provider-main-btn">+ Create Availability</a>
         </div>
 
         <div class="provider-list">
             <#list availabilities as availability>
-                <div class="service-row">
 
-                    <div class="service-left">
-                        <div class="service-icon">📅</div>
+                <div class="provider-service-row">
+
+                    <div class="provider-service-left">
+                        <div class="provider-service-icon">📅</div>
 
                         <div>
-                            <div class="service-name">${availability.date}</div>
-                            <div class="service-desc">Available Slot</div>
+                            <h3>${availability.date}</h3>
+                            <p>Available Slot</p>
                         </div>
                     </div>
 
-                    <div class="service-price">${availability.time}</div>
+                    <div class="provider-service-price">
+                        ${availability.time}
+                    </div>
 
-                    <div class="card-actions">
-                        <a href="/availability/delete/${availability.id}" class="small-btn delete">Delete</a>
+                    <div class="provider-row-actions">
+                        <a href="/availability/delete/${availability.id}" class="provider-small-btn delete">Delete</a>
                     </div>
 
                 </div>
+
             </#list>
+
+            <#if availabilities?size == 0>
+                <p class="provider-empty-text">No availability added yet.</p>
+            </#if>
         </div>
 
-        <div class="provider-bottom-callout">
-            <div class="provider-bottom-left">
-                <div class="callout-icon">✨</div>
-                <div>
-                    <h3>Keep your booking flow smooth</h3>
-                    <p>Update your services so clients know exactly when you are available.</p>
-                </div>
+        <div class="provider-callout">
+            <div>
+                <h3>Keep your booking flow smooth</h3>
+                <p>Update your availability so clients know exactly when they can book you.</p>
             </div>
 
-            <a href="/services-page" class="btn">Go to Services →</a>
+            <a href="/services-page" class="provider-main-btn">Go to Services →</a>
         </div>
 
-    </div>
-</section>
+    </section>
+
+</main>
 
 </body>
 </html>

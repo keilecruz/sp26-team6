@@ -3,47 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Service - GlowUp</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/provider.css">
 </head>
-<body>
 
-<header class="top-header provider-top-header">
-    <nav class="nav-bar">
-        <div class="brand">
-            <img src="/image/logo.jpg" class="logo-banner" alt="GlowUp Logo">
-        </div>
+<body class="provider-page">
 
-        <div class="nav-links">
-            <a href="/services-page" class="active-link">Services</a>
-            <a href="/availability-page">Availability</a>
-            <a href="#">Profile</a>
-            <a href="#">Log out</a>
-        </div>
+<header class="provider-header">
+    <div class="provider-logo">
+        <img src="/photos/logo.png" alt="GlowUp Logo">
+    </div>
+
+    <nav class="provider-nav">
+        <a href="/provider-dashboard">Dashboard</a>
+        <a href="/provider-profile">Profile</a>
+        <a href="/logout" class="provider-nav-btn">Log Out</a>
     </nav>
 </header>
 
-<section class="provider-shell">
-    <div class="provider-panel form-box">
+<main class="provider-main provider-main-top">
 
-        <div class="provider-hero">
-            <div class="provider-hero-left">
-                <h2>Edit Service ✨</h2>
-                <p>Update your service details below.</p>
-            </div>
+    <section class="provider-content-card provider-form-card">
+
+        <div class="provider-page-title">
+            <h1>Edit Service ✨</h1>
+            <p>Update your service details below.</p>
         </div>
 
-        <form action="/services/update/${service.serviceId}" method="post">
+        <form action="/services/update/${service.serviceId}" method="post" class="provider-form">
+
+            <label>Service Name</label>
             <input type="text" name="name" value="${service.name}" required>
+
+            <label>Description</label>
             <input type="text" name="description" value="${service.description}" required>
+
+            <label>Price</label>
             <input type="number" step="0.01" name="price" value="${service.price}" required>
 
-            <button type="submit" class="btn">Update Service</button>
+            <button type="submit" class="provider-main-btn">Update Service</button>
+
         </form>
 
-        <a href="/services-page" class="back">← Back to Services</a>
+        <a href="/services-page" class="provider-back-link">← Back to Services</a>
 
-    </div>
-</section>
+    </section>
+
+</main>
 
 </body>
 </html>

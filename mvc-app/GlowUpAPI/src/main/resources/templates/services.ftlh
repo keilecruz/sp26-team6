@@ -3,47 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>GlowUp Services</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/provider.css">
 </head>
 
-<body>
+<body class="provider-page">
 
-<header class="top-header provider-top-header">
-    <nav class="nav-bar">
-        <div class="brand">
-            <img src="/image/logo.jpg" class="logo-banner" alt="GlowUp Logo">
-        </div>
+<header class="provider-header">
+    <div class="provider-logo">
+        <img src="/photos/logo.png" alt="GlowUp Logo">
+    </div>
 
-        <div class="nav-links">
-            <a href="/services-page" class="active-link">Services</a>
-            <a href="/availability-page">Availability</a>
-            <a href="#">Profile</a>
-            <a href="#">Log out</a>
-        </div>
+    <nav class="provider-nav">
+        <a href="/provider-dashboard">Dashboard</a>
+        
+        <a href="/provider-profile">Profile</a>
+        <a href="/logout" class="provider-nav-btn">Log Out</a>
     </nav>
 </header>
 
-<section class="provider-shell">
-    <div class="provider-panel">
+<main class="provider-main provider-main-top">
 
-        <div class="provider-hero">
-            <div class="provider-hero-left">
-                <h2>My Services ✨</h2>
-                <p>Manage and showcase the services you offer to your clients.</p>
-            </div>
+    <section class="provider-content-card">
+
+        <div class="provider-page-title">
+            <h1>My Services ✨</h1>
+            <p>Manage and showcase the services you offer to your clients.</p>
         </div>
 
-        <div class="provider-action">
-            <a href="/services/create-form" class="btn">+ Create New Service</a>
+        <div class="provider-action-row">
+            <a href="/services/create-form" class="provider-main-btn">+ Create New Service</a>
         </div>
 
         <div class="provider-list">
             <#list services as service>
                 <#assign name = service.name?lower_case>
 
-                <div class="service-row">
-                    <div class="service-left">
-                        <div class="service-icon">
+                <div class="provider-service-row">
+
+                    <div class="provider-service-left">
+                        <div class="provider-service-icon">
                             <#if name?contains("makeup") || name?contains("glam") || name?contains("lashes") || name?contains("bridal")>
                                 💄
                             <#elseif name?contains("hair") || name?contains("cut") || name?contains("haircut") || name?contains("bangs")>
@@ -54,35 +52,40 @@
                         </div>
 
                         <div>
-                            <div class="service-name">${service.name}</div>
-                            <div class="service-desc">${service.description}</div>
+                            <h3>${service.name}</h3>
+                            <p>${service.description}</p>
                         </div>
                     </div>
 
-                    <div class="service-price">$${service.price}</div>
-
-                    <div class="card-actions">
-                        <a href="/services/edit/${service.serviceId}" class="small-btn">Edit</a>
-                        <a href="/services/delete/${service.serviceId}" class="small-btn delete">Delete</a>
+                    <div class="provider-service-price">
+                        $${service.price}
                     </div>
+
+                    <div class="provider-row-actions">
+                        <a href="/services/edit/${service.serviceId}" class="provider-small-btn">Edit</a>
+                        <a href="/services/delete/${service.serviceId}" class="provider-small-btn delete">Delete</a>
+                    </div>
+
                 </div>
             </#list>
+
+            <#if services?size == 0>
+                <p class="provider-empty-text">No services added yet.</p>
+            </#if>
         </div>
 
-        <div class="provider-bottom-callout">
-            <div class="provider-bottom-left">
-                <div class="callout-icon">✨</div>
-                <div>
-                    <h3>Keep your services up to date</h3>
-                    <p>Update your services and availability to keep clients happy and coming back!</p>
-                </div>
+        <div class="provider-callout">
+            <div>
+                <h3>Keep your services up to date</h3>
+                <p>Update your services and availability so customers can book the right service at the right time.</p>
             </div>
 
-            <a href="/availability-page" class="btn">Go to Availability →</a>
+            <a href="/availability-page" class="provider-main-btn">Go to Availability →</a>
         </div>
 
-    </div>
-</section>
+    </section>
+
+</main>
 
 </body>
 </html>

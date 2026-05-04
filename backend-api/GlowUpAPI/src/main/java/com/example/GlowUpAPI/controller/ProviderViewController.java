@@ -23,6 +23,32 @@ public class ProviderViewController {
     @Autowired
     private AvailabilityService availabilityService;
 
+    @GetMapping("/provider-dashboard")
+    public String showProviderDashboard() {
+        return "provider-dashboard";
+    }
+
+    @GetMapping("/provider-profile")
+    public String showProviderProfile() {
+        return "provider-profile";
+    }
+
+    @GetMapping("/provider-profile/edit")
+    public String showEditProviderProfile() {
+        return "provider-profile-edit";
+    }
+
+    @GetMapping("/provider-bookings")
+    public String showProviderBookings() {
+        return "provider-bookings";
+    }
+
+    @GetMapping("/provider-reviews")
+    public String showProviderReviews() {
+        return "provider-reviews";
+    }
+    
+
     @GetMapping("/services-page")
     public String showServicesPage(Model model) {
         List<Service> services = serviceService.getAllServices();

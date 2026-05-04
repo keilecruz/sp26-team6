@@ -3,56 +3,55 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlowUp Login </title>
-    <link rel="stylesheet" href="style.css">
-
-    <!--- This is for user/professional to log in-->
-
+    <title>GlowUp Login</title>
+    <link rel="stylesheet" href="/login.css">
 </head>
 
-<body>
+<body class="login-page">
 
-    <!--- Top Header-->
-    <header class="top-header">
-        <nav>
-            <img src="../../photos/logo.jpg" alt="GlowUp logo" class="logo">
+    <header class="login-header">
+        <div class="login-logo">
+            <img src="/photos/logo.png" alt="GlowUp Logo">
+        </div>
 
-            <div class="nav-links">
-                <a href="/login">Log in</a>
-                <a href="/index" class="btn">Home</a>
-
-            </div>
-
+        <nav class="login-nav">
+            <a href="/index">Home</a>
+            <a href="#">About</a>
+            <a href="/signup" class="login-signup-btn">Sign Up</a>
         </nav>
-
     </header>
 
-    <!--- Login Information (if user has an account for this website)-->
-    <section class="login-section">
-        <div class="container">
+    <main class="login-main">
 
-            <!-- CONNECTS TO SPRING -->
-            <form action="/login" method="post">
+        <section class="login-card">
 
-                <h2>Welcome Back!</h2>
+            <h1>Welcome Back ✨</h1>
+
+            <form action="/login" method="post" class="login-form">
 
                 <label>Email</label>
-
-                <input type="email" name="email" placeholder="Enter your email" required>
+                <input type="email" name="email" placeholder="you@example.com" required>
 
                 <label>Password</label>
-
                 <input type="password" name="password" placeholder="Enter your password" required>
 
-                <button type="submit" class="btn">Log In</button>
+                <button type="submit" class="login-submit-btn">Log In</button>
 
             </form>
 
-            <p> Don't have an Account? <a href="/signup">Sign Up</a></p>
+            <div class="login-divider">
+                <span></span>
+                <p>or</p>
+                <span></span>
+            </div>
 
-        </div>
-    </section>
+            <p class="login-bottom-text">
+                New here? <a href="/signup">Create an account</a>
+            </p>
+
+        </section>
+
+    </main>
 
 </body>
 

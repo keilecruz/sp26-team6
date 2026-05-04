@@ -36,11 +36,10 @@ public class BeautyService {
         Beauty beauty = beautyRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Beauty not found"));
 
-        beauty.setEmail(beautyDetails.getEmail());
-        beauty.setPassword(beautyDetails.getPassword());
-        beauty.setRole(beautyDetails.getRole());
         beauty.setBusinessName(beautyDetails.getBusinessName());
         beauty.setSpecialty(beautyDetails.getSpecialty());
+        beauty.setBio(beautyDetails.getBio());
+        beauty.setProfileImage(beautyDetails.getProfileImage());
 
         return beautyRepository.save(beauty);
     }

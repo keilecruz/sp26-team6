@@ -16,14 +16,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @PrimaryKeyJoinColumn(name = "beauty_id")
-
 public class Beauty extends User {
-    
+
     @Column(nullable = false)
     private String businessName;
 
     @Column
     private String specialty;
+
+    @Column(length = 1000)
+    private String bio;
+
+    @Column
+    private String profileImage;
 
     @OneToMany(mappedBy = "beauty", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("beauty")
@@ -36,5 +41,4 @@ public class Beauty extends User {
     @OneToMany(mappedBy = "beauty", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("beauty")
     private List<Reply> replies;
-
 }

@@ -1,12 +1,10 @@
 package com.example.GlowUpAPI.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import java.util.List;
 
 @Entity
 @Table(name = "portfolios")
@@ -20,17 +18,13 @@ public class Portfolio {
     private Long portfolioId;
 
     @Column(nullable = false)
-    private String titleName;
+    private String imageUrl;
 
-    @Column(length = 1000)
-    private String description;
+    @Column
+    private String caption;
 
     @ManyToOne
-    @JoinColumn(name = "beauty_id", nullable = false)
+    @JoinColumn(name = "beauty_id")
     @JsonIgnoreProperties("portfolios")
     private Beauty beauty;
-
-    @OneToMany(mappedBy = "portfolio", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties("portfolio")
-    private List<Service> services;
 }
