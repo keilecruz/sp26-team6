@@ -2,6 +2,7 @@ package com.example.GlowUpAPI.service;
 
 import com.example.GlowUpAPI.entity.User;
 import com.example.GlowUpAPI.repository.UserRepository;
+import com.example.GlowUpAPI.entity.Beauty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,17 @@ public class UserService {
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
+    public List<User> getAllProviders() {
+    return userRepository.findByRole(User.Role.BEAUTY);
+    }
+
+    public List<Beauty> getAllBeautyProviders() {
+    return userRepository.findByRole(User.Role.BEAUTY)
+            .stream()
+            .filter(user -> user instanceof Beauty)
+            .map(user -> (Beauty) user)
+            .toList();
+}
 
     public Optional<User> getUserById(Long id) {
         return userRepository.findById(id);

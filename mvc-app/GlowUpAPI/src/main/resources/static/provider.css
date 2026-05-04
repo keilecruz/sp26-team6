@@ -144,8 +144,6 @@ body.provider-page {
     }
 }
    
-    /* ===== PROVIDER SERVICE / LIST PAGES ===== */
-
 .provider-main-top {
     align-items: flex-start;
 }
@@ -329,7 +327,6 @@ body.provider-page {
         align-items: flex-start;
     }
 }
-/* ===== PROVIDER FORM PAGES ===== */
 
 .provider-form-card {
     max-width: 720px;
@@ -384,7 +381,6 @@ body.provider-page {
 .provider-back-link:hover {
     text-decoration: underline;
 }
-/* ===== PROVIDER PROFILE PAGE ===== */
 
 .profile-card {
     width: 1150px;
@@ -573,7 +569,6 @@ body.provider-page {
         gap: 10px;
     }
 }
-/* ===== EDIT PROFILE PREVIEW ===== */
 
 .edit-profile-preview {
     text-align: center;
@@ -644,7 +639,6 @@ body.provider-page {
         grid-template-columns: 1fr;
     }
 }
-/* ===== REVIEWS PAGE ===== */
 
 .reviews-summary-card {
     background: linear-gradient(135deg, #ffeaf6 0%, #ffcce8 100%);
@@ -705,7 +699,6 @@ body.provider-page {
     font-size: 16px;
     font-weight: 700;
 }
-/* ===== PROVIDER BOOKINGS PAGE ===== */
 
 .booking-empty-card {
     max-width: 650px;
@@ -744,12 +737,4 @@ body.provider-page {
     font-size: 17px;
     line-height: 1.5;
     margin-bottom: 28px;
-}
-.provider-callout-buttons {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-}
-.provider-callout-buttons .provider-main-btn {
-    white-space: nowrap;
 }

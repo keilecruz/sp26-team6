@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Provider Profile</title>
@@ -8,122 +9,168 @@
 
 <body class="provider-page">
 
-<header class="provider-header">
-    <div class="provider-logo">
-        <img src="/photos/logo.png" alt="GlowUp Logo">
-    </div>
+    <#assign roleString=roleString!"">
+        <#assign isOwner=isOwner!false>
 
-    <nav class="provider-nav">
-        <a href="/provider-dashboard">Dashboard</a>
-        <a href="/provider-profile">Profile</a>
-        <a href="/logout" class="provider-nav-btn">Log Out</a>
-    </nav>
-</header>
+            <header class="provider-header">
+                <div class="provider-logo">
+                    <img src="/photos/logo.png" alt="GlowUp Logo">
+                </div>
 
-<main class="provider-main provider-main-top">
+                <nav class="provider-nav">
 
-    <section class="profile-card">
+                    <#if roleString=="BEAUTY">
+                        <a href="/provider-dashboard">Dashboard</a>
+                        <a href="/provider-profile">Profile</a>
+                        <#else>
+                            <a href="/customer-dashboard">Dashboard</a>
+                            <a href="/browse">Browse</a>
+                    </#if>
 
-        <div class="profile-top">
+                    <a href="/logout" class="provider-nav-btn">Log Out</a>
 
-            <div class="profile-image-box">
-                <#if beauty.profileImage?? && beauty.profileImage != "">
-                    <img src="${beauty.profileImage}" alt="Profile Image" class="profile-main-img">
-                <#else>
-                    <img src="/photos/profilepic.png" alt="Default Profile Image" class="profile-main-img">
-                </#if>
+                </nav>
+            </header>
 
-                <div class="profile-badge">✓</div>
-            </div>
+            <main class="provider-main provider-main-top">
 
-            <div class="profile-info">
-                <h1>${beauty.businessName!"Beauty Professional"} ✨</h1>
+                <section class="profile-card">
 
-                <div class="profile-tag">Beauty Professional</div>
+                    <div class="profile-top">
 
-                <#if reviewCount == 0>
-                    <p class="profile-rating-text">No ratings yet</p>
-                <#else>
-                    <p class="profile-rating-text">
-                        ${averageRating?string["0.0"]} <span class="summary-star">★</span>
-                        based on ${reviewCount} review<#if reviewCount != 1>s</#if>
-                    </p>
-                </#if>
+                        <div class="profile-image-box">
+                            <#if beauty.profileImage?? && beauty.profileImage !="">
+                                <img src="${beauty.profileImage}" class="profile-main-img">
+                                <#else>
+                                    <img src="/photos/profilepic.png" class="profile-main-img">
+                            </#if>
 
-                <p class="profile-bio">
-                    ${beauty.bio!"No bio added yet. Click edit profile to add your business description."}
-                </p>
+                            <div class="profile-badge">✓</div>
+                        </div>
 
-                <a href="/provider-profile/edit" class="provider-main-btn profile-edit-btn">Edit Profile</a>
-            </div>
+                        <div class="profile-info">
 
-        </div>
+                            <h1>${beauty.businessName!"Beauty Professional"} ✨</h1>
 
-        <hr class="profile-divider">
+                            <div class="profile-tag">Beauty Professional</div>
 
-        <div class="profile-section-header">
-            <div>
-                <h2>Reviews</h2>
+                            <#if !reviewCount?? || reviewCount==0>
+                                <p class="profile-rating-text">No ratings yet</p>
+                                <#else>
+                                    <p class="profile-rating-text">
+                                        ${averageRating?string["0.0"]} ★
+                                        based on ${reviewCount} review<#if reviewCount !=1>s</#if>
+                                    </p>
+                            </#if>
 
-                <#if reviewCount == 0>
-                    <p class="profile-rating-text">No reviews yet</p>
-                <#else>
-                    <p class="profile-rating-text">
-                        ${averageRating?string["0.0"]} <span class="summary-star">★</span>
-                        based on ${reviewCount} review<#if reviewCount != 1>s</#if>
-                    </p>
-                </#if>
-            </div>
+                            <p class="profile-bio">
+                                ${beauty.bio!"No bio added yet."}
+                            </p>
 
-            <a href="/provider-reviews">View more reviews →</a>
-        </div>
+                            <#if isOwner>
+                                <a href="/provider-profile/edit" class="provider-main-btn">
+                                    Edit Profile
+                                </a>
 
-        <div class="reviews-preview-grid">
+                                <#elseif roleString=="CUSTOMER">
+                                    <a href="/booking/${beauty.userId}" class="provider-main-btn">
+                                        Book Appointment
+                                    </a>
+                            </#if>
 
-            <#list reviews as review>
-                <#if review_index < 3>
-                    <div class="review-preview-card">
-                        <h3>${review.reviewerName!"Anonymous"}</h3>
+                        </div>
 
-                        <p class="stars">
-                            <#list 1..review.rating as i>★</#list>
-                            <span>${review.rating}.0</span>
-                        </p>
-
-                        <p>${review.comment}</p>
                     </div>
-                </#if>   
-            </#list>
 
-            <#if reviews?size == 0>
-                <p class="provider-empty-text">No reviews yet.</p>
-            </#if>
+                    <hr class="profile-divider">
 
-        </div>
+                    <div class="profile-section-header">
+                        <div>
+                            <h2>Reviews</h2>
 
-        <hr class="profile-divider">
+                            <#if !reviewCount?? || reviewCount==0>
+                                <p class="profile-rating-text">No reviews yet</p>
+                                <#else>
+                                    <p class="profile-rating-text">
+                                        ${averageRating?string["0.0"]} ★
+                                        based on ${reviewCount} review<#if reviewCount !=1>s</#if>
+                                    </p>
+                            </#if>
+                        </div>
 
-        <div class="profile-section-header">
-            <h2>Work Gallery</h2>
-        </div>
+                        <a href="/provider-reviews">View more reviews →</a>
+                    </div>
 
-        <div class="portfolio-preview-grid">
-            <#list portfolios as portfolio>
-                <img src="${portfolio.imageUrl}" alt="Sample work photo">
-            </#list>
+                    <div class="reviews-preview-grid">
 
-            <#if portfolios?size == 0>
-                <p class="provider-empty-text">No sample work photos added yet.</p>
-            </#if>
-        </div>
+                        <#if reviews?? && reviews?size gt 0>
 
-        <div class="profile-bottom-actions">
-            <a href="/provider-dashboard" class="provider-back-button">← Back to Dashboard</a>
-        </div>
+                            <#list reviews as review>
+                                <#if review_index < 3>
+                                    <div class="review-preview-card">
 
-    </section>
+                                        <h3>${review.reviewerName!"Anonymous"}</h3>
 
-</main>
+                                        <p class="stars">
+                                            <#list 1..review.rating as i>★</#list>
+                                            <span>${review.rating}.0</span>
+                                        </p>
+
+                                        <p>${review.comment!""}</p>
+
+                                    </div>
+                                </#if>
+                            </#list>
+
+                            <#else>
+
+                                <p class="provider-empty-text">No reviews yet.</p>
+
+                        </#if>
+
+                    </div>
+
+                    <hr class="profile-divider">
+
+                    <!-- PORTFOLIO -->
+                    <div class="profile-section-header">
+                        <h2>Work Gallery</h2>
+                    </div>
+
+                    <div class="portfolio-preview-grid">
+
+                        <#if portfolios?? && portfolios?size gt 0>
+
+                            <#list portfolios as portfolio>
+                                <img src="${portfolio.imageUrl!'/photos/default.jpg'}">
+                            </#list>
+
+                            <#else>
+
+                                <p class="provider-empty-text">No sample work photos added yet.</p>
+
+                        </#if>
+
+                    </div>
+
+                    <div class="profile-bottom-actions">
+
+                        <#if roleString=="BEAUTY">
+                            <a href="/provider-dashboard" class="provider-back-button">
+                                ← Back to Dashboard
+                            </a>
+                            <#else>
+                                <a href="/browse" class="provider-back-button">
+                                    ← Back to Browse
+                                </a>
+                        </#if>
+
+                    </div>
+
+                </section>
+
+            </main>
 
 </body>
+
 </html>

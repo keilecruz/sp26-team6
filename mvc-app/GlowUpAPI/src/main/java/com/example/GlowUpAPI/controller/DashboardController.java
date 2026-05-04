@@ -1,26 +1,65 @@
 package com.example.GlowUpAPI.controller;
 
 import jakarta.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.GlowUpAPI.entity.Customer;
+import com.example.GlowUpAPI.entity.User;
+import com.example.GlowUpAPI.service.CustomerService;
+import com.example.GlowUpAPI.service.UserService;
+
+import java.util.List;
+import java.util.Collections;
 
 @Controller
 public class DashboardController {
 
-    @GetMapping("/dashboard")
-    public String dashboard(HttpSession session, Model model) {
+    @Autowired
+    private CustomerService customerService;
+    @Autowired
+    private final UserService userService;
 
-        Customer customer = (Customer) session.getAttribute("customer");
+    public DashboardController(UserService userService, CustomerService customerService) {
+        this.userService = userService;
+        this.customerService = customerService;
+    }
 
-        if (customer != null) {
-            model.addAttribute("userName", customer.getFirstName());
-        } else {
-            model.addAttribute("userName", "Guest");
+    @GetMapping("/customer-dashboard")
+    public String customerDashboard(HttpSession session, Model model) {
+
+        User user = (User) session.getAttribute("loggedInUser");
+
+        if (user == null) {
+            return "redirect:/login";
         }
 
-        return "dashboard";
+        if (user.getRole() != User.Role.CUSTOMER) {
+            return "redirect:/provider-dashboard";
+        }
+
+        Customer customer = customerService
+                .getCustomerById(user.getUserId())
+                .orElse(null);
+
+        String name = (customer != null) ? customer.getFirstName() : "User";
+
+        model.addAttribute("userName", name);
+
+        List<User> providers = userService.getAllProviders();
+
+        Collections.shuffle(providers);
+
+        if (providers.size() > 3) {
+            providers = providers.subList(0, 3);
+        }
+
+        model.addAttribute("providers", providers);
+
+        return "customer-dashboard";
     }
+
 }

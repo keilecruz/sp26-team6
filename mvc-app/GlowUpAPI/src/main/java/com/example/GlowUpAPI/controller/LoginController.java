@@ -29,8 +29,8 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@RequestParam String email,
-                        @RequestParam String password,
-                        HttpSession session) {
+            @RequestParam String password,
+            HttpSession session) {
 
         Optional<User> userOptional = userService.getUserByEmail(email);
 
@@ -63,15 +63,17 @@ public class LoginController {
             return "redirect:/login?error";
         }
 
-        session.setAttribute("customer", customer);
-        session.setAttribute("loggedInCustomerId", customer.getId());
-        session.setAttribute("loggedInRole", customer.getRole());
+        User tempUser = new User();
+        tempUser.setUserId(customer.getId());
+        tempUser.setEmail(customer.getEmail());
+        tempUser.setRole(User.Role.CUSTOMER);
 
-        if ("ADMIN".equalsIgnoreCase(customer.getRole())) {
-            return "redirect:/admin/dashboard";
-        }
+        session.setAttribute("loggedInUser", tempUser);
 
-        return "redirect:/dashboard";
+        session.setAttribute("loggedInUserId", tempUser.getUserId());
+        session.setAttribute("loggedInRole", tempUser.getRole());
+
+        return "redirect:/customer-dashboard";
     }
 
     @GetMapping("/logout")

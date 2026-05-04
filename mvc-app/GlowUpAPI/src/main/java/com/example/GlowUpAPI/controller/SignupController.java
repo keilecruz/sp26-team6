@@ -89,7 +89,7 @@ public class SignupController {
             session.setAttribute("loggedInCustomerId", savedCustomer.getId());
             session.setAttribute("loggedInRole", savedCustomer.getRole());
 
-            return "redirect:/dashboard";
+            return "redirect:/customer-dashboard";
 
         } catch (Exception e) {
             e.printStackTrace();

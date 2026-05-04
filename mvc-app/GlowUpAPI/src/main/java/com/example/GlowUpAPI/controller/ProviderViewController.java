@@ -10,6 +10,8 @@ import com.example.GlowUpAPI.service.BeautyService;
 import com.example.GlowUpAPI.service.PortfolioService;
 import com.example.GlowUpAPI.service.ReviewService;
 import com.example.GlowUpAPI.service.ServiceService;
+import com.example.GlowUpAPI.service.UserService;
+import com.example.GlowUpAPI.entity.User;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -63,12 +65,20 @@ public class ProviderViewController {
     }
 
     @GetMapping("/provider-dashboard")
-    public String showProviderDashboard(HttpSession session) {
-        Long beautyId = getLoggedInBeautyId(session);
+    public String providerDashboard(HttpSession session, Model model) {
 
-        if (beautyId == null) {
+        User user = (User) session.getAttribute("loggedInUser");
+
+        if (user == null) {
             return "redirect:/login";
         }
+
+        // 🔒 ensure only providers
+        if (user.getRole() != User.Role.BEAUTY) {
+            return "redirect:/customer-dashboard";
+        }
+
+        model.addAttribute("userName", user.getEmail());
 
         return "provider-dashboard";
     }
@@ -94,6 +104,9 @@ public class ProviderViewController {
         model.addAttribute("reviews", reviews);
         model.addAttribute("averageRating", averageRating);
         model.addAttribute("reviewCount", reviews.size());
+
+        model.addAttribute("roleString", "BEAUTY");
+        model.addAttribute("isOwner", true);
 
         return "provider-profile";
     }
@@ -220,9 +233,9 @@ public class ProviderViewController {
 
     @PostMapping("/provider/{beautyId}/reviews/add")
     public String addReview(@PathVariable Long beautyId,
-                            @RequestParam String reviewerName,
-                            @RequestParam Integer rating,
-                            @RequestParam String comment) {
+            @RequestParam String reviewerName,
+            @RequestParam Integer rating,
+            @RequestParam String comment) {
 
         Beauty beauty = beautyService.getBeautyById(beautyId)
                 .orElseThrow(() -> new RuntimeException("Beauty profile not found"));
@@ -240,9 +253,9 @@ public class ProviderViewController {
 
     @PostMapping("/provider-reviews/add")
     public String addReviewForLoggedInProvider(@RequestParam String reviewerName,
-                                               @RequestParam Integer rating,
-                                               @RequestParam String comment,
-                                               HttpSession session) {
+            @RequestParam Integer rating,
+            @RequestParam String comment,
+            HttpSession session) {
 
         Long beautyId = getLoggedInBeautyId(session);
 
@@ -395,4 +408,5 @@ public class ProviderViewController {
         availabilityService.deleteAvailability(id);
         return "redirect:/availability-page";
     }
+
 }
