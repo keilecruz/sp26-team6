@@ -738,3 +738,18 @@ body.provider-page {
     line-height: 1.5;
     margin-bottom: 28px;
 }
+.provider-callout-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+}
+
+.provider-callout-buttons .provider-main-btn {
+    text-align: center;
+    white-space: nowrap;
+    padding: 14px 20px;
+    font-size: 15px;
+}
