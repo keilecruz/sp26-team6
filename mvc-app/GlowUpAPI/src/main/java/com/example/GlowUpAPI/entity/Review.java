@@ -30,4 +30,7 @@ public class Review {
 
     @Column(columnDefinition = "TEXT")
     private String comment;
+
+    @Column
+    private Long customerId;
 }

@@ -37,11 +37,14 @@ public class ServiceService {
         return serviceRepository.findById(id);
     }
 
-    public List<Service> getServicesByBeautyId(Long beautyId) {
+    public List<Service> getByBeautyId(Long beautyId) {
         return serviceRepository.findAll().stream()
-                .filter(service -> service.getBeauty() != null
-                        && service.getBeauty().getUserId().equals(beautyId))
+                .filter(s -> s.getBeauty() != null && s.getBeauty().getUserId().equals(beautyId))
                 .toList();
+    }
+
+    public Service getById(Long id) {
+        return serviceRepository.findById(id).orElse(null);
     }
 
     public Service updateService(Long id, Service serviceDetails) {
@@ -59,7 +62,6 @@ public class ServiceService {
     public void deleteService(Long id) {
         serviceRepository.deleteById(id);
     }
-
 
     // adding in logic for customer to browse through professionals
     public List<Service> searchServices(String keyword, String category) {

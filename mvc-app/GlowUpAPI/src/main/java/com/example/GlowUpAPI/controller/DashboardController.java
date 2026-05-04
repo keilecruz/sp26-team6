@@ -2,13 +2,14 @@ package com.example.GlowUpAPI.controller;
 
 import jakarta.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.GlowUpAPI.entity.Booking;
 import com.example.GlowUpAPI.entity.Customer;
 import com.example.GlowUpAPI.entity.User;
+import com.example.GlowUpAPI.service.BookingService;
 import com.example.GlowUpAPI.service.CustomerService;
 import com.example.GlowUpAPI.service.UserService;
 
@@ -18,14 +19,17 @@ import java.util.Collections;
 @Controller
 public class DashboardController {
 
-    @Autowired
-    private CustomerService customerService;
-    @Autowired
+    private final CustomerService customerService;
     private final UserService userService;
+    private final BookingService bookingService;
 
-    public DashboardController(UserService userService, CustomerService customerService) {
+    public DashboardController(UserService userService,
+            CustomerService customerService,
+            BookingService bookingService) {
+
         this.userService = userService;
         this.customerService = customerService;
+        this.bookingService = bookingService;
     }
 
     @GetMapping("/customer-dashboard")
@@ -46,11 +50,12 @@ public class DashboardController {
                 .orElse(null);
 
         String name = (customer != null) ? customer.getFirstName() : "User";
-
         model.addAttribute("userName", name);
 
-        List<User> providers = userService.getAllProviders();
+        List<Booking> bookings = bookingService.getByCustomerId(user.getUserId());
+        model.addAttribute("bookings", bookings);
 
+        List<User> providers = userService.getAllProviders();
         Collections.shuffle(providers);
 
         if (providers.size() > 3) {

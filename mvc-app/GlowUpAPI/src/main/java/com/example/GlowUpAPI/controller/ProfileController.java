@@ -3,10 +3,13 @@ package com.example.GlowUpAPI.controller;
 import com.example.GlowUpAPI.entity.Beauty;
 import com.example.GlowUpAPI.entity.Customer;
 import com.example.GlowUpAPI.entity.Portfolio;
+import com.example.GlowUpAPI.entity.Review;
 import com.example.GlowUpAPI.service.CustomerService;
 import com.example.GlowUpAPI.service.PortfolioService;
 import com.example.GlowUpAPI.service.UserService;
 import com.example.GlowUpAPI.entity.User;
+import com.example.GlowUpAPI.entity.Review;
+import com.example.GlowUpAPI.service.ReviewService;
 import java.util.List;
 
 import jakarta.servlet.http.HttpSession;
@@ -25,6 +28,8 @@ public class ProfileController {
     private final CustomerService customerService;
     @Autowired
     private final UserService userService;
+    @Autowired
+    private ReviewService reviewService;
 
     public ProfileController(CustomerService customerService, UserService userService) {
         this.customerService = customerService;
@@ -74,53 +79,52 @@ public class ProfileController {
         return "redirect:/customer-dashboard";
     }
 
- @GetMapping("/provider/{id}")
-public String viewProvider(@PathVariable Long id,
-                           HttpSession session,
-                           Model model) {
+    @GetMapping("/provider/{id}")
+    public String viewProvider(@PathVariable Long id,
+            HttpSession session,
+            Model model) {
 
-    User user = userService.getUserById(id)
-            .orElseThrow();
+        User user = userService.getUserById(id).orElseThrow();
 
-    if (!(user instanceof Beauty)) {
-        return "redirect:/browse";
+        if (!(user instanceof Beauty)) {
+            return "redirect:/browse";
+        }
+
+        Beauty beauty = (Beauty) user;
+        model.addAttribute("beauty", beauty);
+
+        User loggedIn = (User) session.getAttribute("loggedInUser");
+
+        boolean isOwner = false;
+        String roleString = "";
+
+        if (loggedIn != null) {
+            roleString = loggedIn.getRole().name();
+
+            if (loggedIn.getRole() == User.Role.BEAUTY &&
+                    loggedIn.getUserId().equals(id)) {
+                isOwner = true;
+            }
+        }
+
+        model.addAttribute("roleString", roleString);
+        model.addAttribute("isOwner", isOwner);
+
+        List<Portfolio> portfolios = portfolioService.getPortfoliosByBeautyId(id);
+        model.addAttribute("portfolios", portfolios);
+
+        List<Review> reviews = reviewService.getReviewsByBeautyId(id);
+        model.addAttribute("reviews", reviews);
+
+        model.addAttribute("reviewCount", reviews.size());
+
+        double avg = reviews.stream()
+                .mapToInt(Review::getRating)
+                .average()
+                .orElse(0.0);
+
+        model.addAttribute("averageRating", avg);
+
+        return "provider-profile";
     }
-
-    Beauty beauty = (Beauty) user;
-    model.addAttribute("beauty", beauty);
-
-    // 🔥 Logged-in user
-    User loggedIn = (User) session.getAttribute("loggedInUser");
-
-    // ✅ role
-    String roleString = "";
-    if (loggedIn != null && loggedIn.getRole() != null) {
-        roleString = loggedIn.getRole().name();
-    }
-    model.addAttribute("roleString", roleString);
-
-    // ✅ FIXED ownership logic
-    boolean isOwner = false;
-
-    if (loggedIn != null
-            && loggedIn.getRole() == User.Role.BEAUTY   // 🔥 critical fix
-            && loggedIn.getUserId() != null
-            && id != null) {
-
-        isOwner = loggedIn.getUserId().longValue() == id.longValue();
-    }
-
-    model.addAttribute("isOwner", isOwner);
-
-    // 🔥 LOAD REAL DATA (portfolio images)
-    List<Portfolio> portfolios = portfolioService.getPortfoliosByBeautyId(id);
-    model.addAttribute("portfolios", portfolios);
-
-    // (you can upgrade these later)
-    model.addAttribute("reviews", java.util.Collections.emptyList());
-    model.addAttribute("reviewCount", 0);
-    model.addAttribute("averageRating", 0.0);
-
-    return "provider-profile";
-}
 }

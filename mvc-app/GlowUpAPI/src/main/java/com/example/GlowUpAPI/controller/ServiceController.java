@@ -42,7 +42,7 @@ public class ServiceController {
     // get services by Beauty (provider)
     @GetMapping("/beauty/{beautyId}")
     public ResponseEntity<List<Service>> getServicesByBeauty(@PathVariable Long beautyId) {
-        List<Service> services = serviceService.getServicesByBeautyId(beautyId);
+        List<Service> services = serviceService.getByBeautyId(beautyId);
         return new ResponseEntity<>(services, HttpStatus.OK);
     }
 

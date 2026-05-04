@@ -73,7 +73,7 @@
                                 </a>
 
                                 <#elseif roleString=="CUSTOMER">
-                                    <a href="/booking/${beauty.userId}" class="provider-main-btn">
+                                    <a href="/book/${beauty.userId}" class="provider-main-btn">
                                         Book Appointment
                                     </a>
                             </#if>
@@ -98,7 +98,10 @@
                             </#if>
                         </div>
 
-                        <a href="/provider-reviews">View more reviews →</a>
+                        <a href="/provider-reviews?beautyId=${beauty.userId}">
+                            View more reviews →
+                        </a>
+
                     </div>
 
                     <div class="reviews-preview-grid">

@@ -194,18 +194,27 @@ public class ProviderViewController {
     }
 
     @GetMapping("/provider-reviews")
-    public String showProviderReviews(Model model, HttpSession session) {
-        Long beautyId = getLoggedInBeautyId(session);
+    public String showProviderReviews(@RequestParam Long beautyId,
+            Model model,
+            HttpSession session) {
 
-        if (beautyId == null) {
+        User user = (User) session.getAttribute("loggedInUser");
+
+        if (user == null) {
             return "redirect:/login";
         }
+
+        model.addAttribute("roleString", user.getRole().name());
 
         Beauty beauty = beautyService.getBeautyById(beautyId)
                 .orElseThrow(() -> new RuntimeException("Beauty profile not found"));
 
         List<Review> reviews = reviewService.getReviewsByBeautyId(beautyId);
-        double averageRating = calculateAverageRating(reviews);
+
+        double averageRating = reviews.stream()
+                .mapToInt(Review::getRating)
+                .average()
+                .orElse(0.0);
 
         model.addAttribute("beauty", beauty);
         model.addAttribute("reviews", reviews);
@@ -274,7 +283,7 @@ public class ProviderViewController {
             return "redirect:/login";
         }
 
-        List<Service> services = serviceService.getServicesByBeautyId(beautyId);
+        List<Service> services = serviceService.getByBeautyId(beautyId);
         model.addAttribute("services", services);
 
         return "services";
@@ -363,7 +372,7 @@ public class ProviderViewController {
             return "redirect:/login";
         }
 
-        List<Availability> list = availabilityService.getAvailabilityByBeautyId(beautyId);
+        List<Availability> list = availabilityService.getByBeautyId(beautyId);
         model.addAttribute("availabilities", list);
 
         return "availability";
