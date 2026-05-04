@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("/api/availability")
 public class AvailabilityController {
@@ -33,22 +34,23 @@ public class AvailabilityController {
     // get by ID
     @GetMapping("/{id}")
     public ResponseEntity<Availability> getAvailabilityById(@PathVariable Long id) {
-        return availabilityService.getAvailabilityById(id)
-                .map(a -> new ResponseEntity<>(a, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+
+        Availability availability = availabilityService.getById(id);
+
+        return new ResponseEntity<>(availability, HttpStatus.OK);
     }
 
     // get availability by Beauty
     @GetMapping("/beauty/{beautyId}")
     public ResponseEntity<List<Availability>> getAvailabilityByBeauty(@PathVariable Long beautyId) {
-        List<Availability> list = availabilityService.getAvailabilityByBeautyId(beautyId);
+        List<Availability> list = availabilityService.getByBeautyId(beautyId);
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     // update availability
     @PutMapping("/{id}")
     public ResponseEntity<Availability> updateAvailability(@PathVariable Long id,
-                                                           @RequestBody Availability details) {
+            @RequestBody Availability details) {
         try {
             Availability updated = availabilityService.updateAvailability(id, details);
             return new ResponseEntity<>(updated, HttpStatus.OK);

@@ -26,6 +26,10 @@ public class ReviewService {
         return reviewRepository.findById(id);
     }
 
+    public Review save(Review review) {
+        return reviewRepository.save(review);
+    }
+
     public List<Review> getReviewsByBeautyId(Long beautyId) {
         return reviewRepository.findByBeauty_UserId(beautyId);
     }
@@ -33,4 +37,9 @@ public class ReviewService {
     public void deleteReview(Long id) {
         reviewRepository.deleteById(id);
     }
+
+    public List<Review> getReviewsByCustomerId(Long customerId) {
+        return reviewRepository.findByCustomerId(customerId);
+    }
+    
 }

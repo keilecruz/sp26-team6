@@ -34,11 +34,11 @@ public class AvailabilityService {
         return availabilityRepository.findAll();
     }
 
-    public Optional<Availability> getAvailabilityById(Long id) {
-        return availabilityRepository.findById(id);
+    public Availability getById(Long id) {
+        return availabilityRepository.findById(id).orElse(null);
     }
 
-    public List<Availability> getAvailabilityByBeautyId(Long beautyId) {
+    public List<Availability> getByBeautyId(Long beautyId) {
         return availabilityRepository.findAll().stream()
                 .filter(a -> a.getBeauty() != null && a.getBeauty().getUserId().equals(beautyId))
                 .toList();
