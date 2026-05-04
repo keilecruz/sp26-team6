@@ -1,13 +1,13 @@
 package com.example.GlowUpAPI.repository;
 
-import com.example.GlowUpAPI.entity.Review;
+import com.example.GlowUpAPI.entity.Portfolio;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface ReviewRepository extends JpaRepository<Review, Long> {
+public interface PortfolioRepository extends JpaRepository<Portfolio, Long> {
 
-    List<Review> findByBeauty_UserId(Long beautyId);
+    List<Portfolio> findByBeauty_UserId(Long beautyId);
 }

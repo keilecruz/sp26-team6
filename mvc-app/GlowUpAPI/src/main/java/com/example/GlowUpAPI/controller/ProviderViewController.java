@@ -2,9 +2,13 @@ package com.example.GlowUpAPI.controller;
 
 import com.example.GlowUpAPI.entity.Availability;
 import com.example.GlowUpAPI.entity.Beauty;
+import com.example.GlowUpAPI.entity.Portfolio;
+import com.example.GlowUpAPI.entity.Review;
 import com.example.GlowUpAPI.entity.Service;
 import com.example.GlowUpAPI.service.AvailabilityService;
 import com.example.GlowUpAPI.service.BeautyService;
+import com.example.GlowUpAPI.service.PortfolioService;
+import com.example.GlowUpAPI.service.ReviewService;
 import com.example.GlowUpAPI.service.ServiceService;
 
 import jakarta.servlet.http.HttpSession;
@@ -15,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -30,6 +35,12 @@ public class ProviderViewController {
     @Autowired
     private BeautyService beautyService;
 
+    @Autowired
+    private PortfolioService portfolioService;
+
+    @Autowired
+    private ReviewService reviewService;
+
     private Long getLoggedInBeautyId(HttpSession session) {
         Object userId = session.getAttribute("loggedInUserId");
 
@@ -38,6 +49,17 @@ public class ProviderViewController {
         }
 
         return (Long) userId;
+    }
+
+    private double calculateAverageRating(List<Review> reviews) {
+        if (reviews == null || reviews.isEmpty()) {
+            return 0.0;
+        }
+
+        return reviews.stream()
+                .mapToInt(Review::getRating)
+                .average()
+                .orElse(0.0);
     }
 
     @GetMapping("/provider-dashboard")
@@ -62,7 +84,16 @@ public class ProviderViewController {
         Beauty beauty = beautyService.getBeautyById(beautyId)
                 .orElseThrow(() -> new RuntimeException("Beauty profile not found"));
 
+        List<Portfolio> portfolios = portfolioService.getPortfoliosByBeautyId(beautyId);
+        List<Review> reviews = reviewService.getReviewsByBeautyId(beautyId);
+
+        double averageRating = calculateAverageRating(reviews);
+
         model.addAttribute("beauty", beauty);
+        model.addAttribute("portfolios", portfolios);
+        model.addAttribute("reviews", reviews);
+        model.addAttribute("averageRating", averageRating);
+        model.addAttribute("reviewCount", reviews.size());
 
         return "provider-profile";
     }
@@ -78,7 +109,10 @@ public class ProviderViewController {
         Beauty beauty = beautyService.getBeautyById(beautyId)
                 .orElseThrow(() -> new RuntimeException("Beauty profile not found"));
 
+        List<Portfolio> portfolios = portfolioService.getPortfoliosByBeautyId(beautyId);
+
         model.addAttribute("beauty", beauty);
+        model.addAttribute("portfolios", portfolios);
 
         return "provider-profile-edit";
     }
@@ -96,6 +130,45 @@ public class ProviderViewController {
         return "redirect:/provider-profile";
     }
 
+    @PostMapping("/provider-sample-work/add")
+    public String addSampleWork(String imageUrl, HttpSession session) {
+        Long beautyId = getLoggedInBeautyId(session);
+
+        if (beautyId == null) {
+            return "redirect:/login";
+        }
+
+        if (imageUrl == null || imageUrl.isBlank()) {
+            return "redirect:/provider-profile/edit";
+        }
+
+        Beauty beauty = beautyService.getBeautyById(beautyId)
+                .orElseThrow(() -> new RuntimeException("Beauty profile not found"));
+
+        Portfolio portfolio = new Portfolio();
+        portfolio.setImageUrl(imageUrl);
+        portfolio.setBeauty(beauty);
+
+        portfolioService.createPortfolio(portfolio);
+
+        return "redirect:/provider-profile/edit";
+    }
+
+    @GetMapping("/provider-sample-work/delete/{id}")
+    public String deleteSampleWork(@PathVariable Long id, HttpSession session) {
+        Long beautyId = getLoggedInBeautyId(session);
+
+        if (beautyId == null) {
+            return "redirect:/login";
+        }
+
+        if (portfolioService.belongsToBeauty(id, beautyId)) {
+            portfolioService.deletePortfolio(id);
+        }
+
+        return "redirect:/provider-profile/edit";
+    }
+
     @GetMapping("/provider-bookings")
     public String showProviderBookings(HttpSession session) {
         Long beautyId = getLoggedInBeautyId(session);
@@ -108,14 +181,76 @@ public class ProviderViewController {
     }
 
     @GetMapping("/provider-reviews")
-    public String showProviderReviews(HttpSession session) {
+    public String showProviderReviews(Model model, HttpSession session) {
         Long beautyId = getLoggedInBeautyId(session);
 
         if (beautyId == null) {
             return "redirect:/login";
         }
 
+        Beauty beauty = beautyService.getBeautyById(beautyId)
+                .orElseThrow(() -> new RuntimeException("Beauty profile not found"));
+
+        List<Review> reviews = reviewService.getReviewsByBeautyId(beautyId);
+        double averageRating = calculateAverageRating(reviews);
+
+        model.addAttribute("beauty", beauty);
+        model.addAttribute("reviews", reviews);
+        model.addAttribute("averageRating", averageRating);
+        model.addAttribute("reviewCount", reviews.size());
+
         return "provider-reviews";
+    }
+
+    @GetMapping("/provider/{beautyId}/reviews")
+    public String showPublicProviderReviews(@PathVariable Long beautyId, Model model) {
+        Beauty beauty = beautyService.getBeautyById(beautyId)
+                .orElseThrow(() -> new RuntimeException("Beauty profile not found"));
+
+        List<Review> reviews = reviewService.getReviewsByBeautyId(beautyId);
+        double averageRating = calculateAverageRating(reviews);
+
+        model.addAttribute("beauty", beauty);
+        model.addAttribute("reviews", reviews);
+        model.addAttribute("averageRating", averageRating);
+        model.addAttribute("reviewCount", reviews.size());
+
+        return "provider-reviews";
+    }
+
+    @PostMapping("/provider/{beautyId}/reviews/add")
+    public String addReview(@PathVariable Long beautyId,
+                            @RequestParam String reviewerName,
+                            @RequestParam Integer rating,
+                            @RequestParam String comment) {
+
+        Beauty beauty = beautyService.getBeautyById(beautyId)
+                .orElseThrow(() -> new RuntimeException("Beauty profile not found"));
+
+        Review review = new Review();
+        review.setBeauty(beauty);
+        review.setReviewerName(reviewerName);
+        review.setRating(rating);
+        review.setComment(comment);
+
+        reviewService.createReview(review);
+
+        return "redirect:/provider/" + beautyId + "/reviews";
+    }
+
+    @PostMapping("/provider-reviews/add")
+    public String addReviewForLoggedInProvider(@RequestParam String reviewerName,
+                                               @RequestParam Integer rating,
+                                               @RequestParam String comment,
+                                               HttpSession session) {
+
+        Long beautyId = getLoggedInBeautyId(session);
+
+        if (beautyId == null) {
+            return "redirect:/login";
+        }
+
+        return addReview(beautyId, reviewerName, rating, comment);
     }
 
     @GetMapping("/services-page")

@@ -41,6 +41,15 @@
 
                 <div class="profile-tag">Beauty Professional</div>
 
+                <#if reviewCount == 0>
+                    <p class="profile-rating-text">No ratings yet</p>
+                <#else>
+                    <p class="profile-rating-text">
+                        ${averageRating?string["0.0"]} <span class="summary-star">★</span>
+                        based on ${reviewCount} review<#if reviewCount != 1>s</#if>
+                    </p>
+                </#if>
+
                 <p class="profile-bio">
                     ${beauty.bio!"No bio added yet. Click edit profile to add your business description."}
                 </p>
@@ -53,44 +62,59 @@
         <hr class="profile-divider">
 
         <div class="profile-section-header">
-            <h2>Reviews</h2>
+            <div>
+                <h2>Reviews</h2>
+
+                <#if reviewCount == 0>
+                    <p class="profile-rating-text">No reviews yet</p>
+                <#else>
+                    <p class="profile-rating-text">
+                        ${averageRating?string["0.0"]} <span class="summary-star">★</span>
+                        based on ${reviewCount} review<#if reviewCount != 1>s</#if>
+                    </p>
+                </#if>
+            </div>
+
             <a href="/provider-reviews">View more reviews →</a>
         </div>
 
         <div class="reviews-preview-grid">
 
-            <div class="review-preview-card">
-                <h3>Samantha R.</h3>
-                <p class="stars">★★★★★ <span>5.0</span></p>
-                <p>Absolutely loved the service! So clean, pretty, and professional.</p>
-            </div>
+            <#list reviews as review>
+                <#if review_index < 3>
+                    <div class="review-preview-card">
+                        <h3>${review.reviewerName!"Anonymous"}</h3>
 
-            <div class="review-preview-card">
-                <h3>Jasmine L.</h3>
-                <p class="stars">★★★★★ <span>5.0</span></p>
-                <p>My makeup came out stunning. I felt so confident for my event.</p>
-            </div>
+                        <p class="stars">
+                            <#list 1..review.rating as i>★</#list>
+                            <span>${review.rating}.0</span>
+                        </p>
 
-            <div class="review-preview-card">
-                <h3>Aaliyah M.</h3>
-                <p class="stars">★★★★★ <span>5.0</span></p>
-                <p>Very talented and sweet. I would definitely book again.</p>
-            </div>
+                        <p>${review.comment}</p>
+                    </div>
+                </#if>   
+            </#list>
+
+            <#if reviews?size == 0>
+                <p class="provider-empty-text">No reviews yet.</p>
+            </#if>
 
         </div>
 
         <hr class="profile-divider">
 
         <div class="profile-section-header">
-            <h2>Work Gallary</h2>
+            <h2>Work Gallery</h2>
         </div>
 
         <div class="portfolio-preview-grid">
-            <img src="/photos/makeup1.jpg" alt="Portfolio work">
-            <img src="/photos/hair1.jpg" alt="Portfolio work">
-            <img src="/photos/hair2.jpg" alt="Portfolio work">
-            <img src="/photos/hair3.jpg" alt="Portfolio work">
-            <img src="/photos/profilepic.png" alt="Portfolio work">
+            <#list portfolios as portfolio>
+                <img src="${portfolio.imageUrl}" alt="Sample work photo">
+            </#list>
+
+            <#if portfolios?size == 0>
+                <p class="provider-empty-text">No sample work photos added yet.</p>
+            </#if>
         </div>
 
         <div class="profile-bottom-actions">

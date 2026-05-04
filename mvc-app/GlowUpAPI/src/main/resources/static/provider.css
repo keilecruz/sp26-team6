@@ -510,8 +510,8 @@ body.provider-page {
     line-height: 1.4;
 }
 
-.stars {
-    color: #ff45b4;
+.review-preview-card .stars {
+    color: #ffc107 !important;
     font-weight: 900;
     margin-bottom: 12px;
 }
@@ -599,4 +599,145 @@ body.provider-page {
 .provider-form-actions .provider-main-btn {
     text-align: center;
     flex: 1;
+}
+.sample-work-title {
+    margin-top: 10px;
+}
+
+.sample-work-title h1 {
+    font-size: 34px;
+}
+
+.edit-sample-work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 24px;
+}
+
+.edit-sample-work-card {
+    background: linear-gradient(135deg, #fff7fb 0%, #ffe4f2 100%);
+    border: 1.5px solid #ffb8de;
+    border-radius: 22px;
+    padding: 15px;
+    box-shadow: 0 12px 24px rgba(255, 69, 180, 0.08);
+}
+
+.edit-sample-work-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 12px;
+}
+
+.edit-sample-work-card .provider-small-btn {
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .edit-sample-work-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ===== REVIEWS PAGE ===== */
+
+.reviews-summary-card {
+    background: linear-gradient(135deg, #ffeaf6 0%, #ffcce8 100%);
+    border: 1.5px solid #ffb8de;
+    border-radius: 26px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 14px 30px rgba(255, 69, 180, 0.12);
+}
+
+.reviews-summary-card h2 {
+    color: #2b2b35;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 44px;
+    margin-bottom: 8px;
+}
+
+.reviews-summary-card p {
+    color: #555;
+    font-size: 17px;
+}
+
+.add-review-box {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1.5px solid #ffc7dc;
+    border-radius: 26px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 24px rgba(255, 69, 180, 0.08);
+}
+
+.add-review-box h2 {
+    color: #ff45b4;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.all-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+@media (max-width: 900px) {
+    .all-reviews-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.summary-star {
+    color: #ffc107;
+}
+.profile-rating-text {
+    margin-top: 6px;
+    color: #555;
+    font-size: 16px;
+    font-weight: 700;
+}
+/* ===== PROVIDER BOOKINGS PAGE ===== */
+
+.booking-empty-card {
+    max-width: 650px;
+    margin: 20px auto 0;
+    background: linear-gradient(135deg, #fff7fb 0%, #ffe4f2 100%);
+    border: 1.5px solid #ffb8de;
+    border-radius: 28px;
+    padding: 48px 38px;
+    text-align: center;
+    box-shadow: 0 14px 30px rgba(255, 69, 180, 0.12);
+}
+
+.booking-empty-icon {
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: white;
+    color: #ff45b4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    box-shadow: 0 10px 24px rgba(255, 69, 180, 0.12);
+}
+
+.booking-empty-card h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 34px;
+    color: #ff45b4;
+    margin-bottom: 12px;
+}
+
+.booking-empty-card p {
+    color: #555;
+    font-size: 17px;
+    line-height: 1.5;
+    margin-bottom: 28px;
 }

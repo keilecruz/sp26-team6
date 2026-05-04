@@ -58,9 +58,37 @@
 
         </form>
 
+        <hr class="profile-divider">
+
+        <div class="provider-page-title sample-work-title">
+            <h1>Sample Work</h1>
+            <p>Add image paths for your makeup, hair, nails, or beauty work.</p>
+        </div>
+
+        <form action="/provider-sample-work/add" method="post" class="provider-form">
+
+            <label>Sample Work Image Path</label>
+            <input type="text" name="imageUrl" placeholder="/photos/makeup1.jpg" required>
+
+            <button type="submit" class="provider-main-btn">Add Sample Work</button>
+
+        </form>
+
+        <div class="edit-sample-work-grid">
+            <#list portfolios as portfolio>
+                <div class="edit-sample-work-card">
+                    <img src="${portfolio.imageUrl}" alt="Sample work photo">
+                    <a href="/provider-sample-work/delete/${portfolio.portfolioId}" class="provider-small-btn delete">Delete</a>
+                </div>
+            </#list>
+
+            <#if portfolios?size == 0>
+                <p class="provider-empty-text">No sample work photos added yet.</p>
+            </#if>
+        </div>
+
         <div class="provider-form-actions">
             <a href="/provider-profile" class="provider-main-btn">Back to Profile</a>
-            
         </div>
 
     </section>
