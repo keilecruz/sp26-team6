@@ -54,6 +54,8 @@
 
                             <div>
                                 <h3>${booking.service.name!"Booked Service"}</h3>
+                                <p>Customer: ${booking.customerName!"Customer name not provided"}</p>
+                                <p>Phone: ${booking.customerPhone!"Phone not provided"}</p>
 
                                 <p>
                                     Availability:

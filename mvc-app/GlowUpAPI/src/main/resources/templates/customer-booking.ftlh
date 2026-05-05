@@ -37,6 +37,17 @@
 
                 <hr class="profile-divider">
 
+                <!-- CUSTOMER INFO -->
+                <h2>Your Information</h2>
+
+                <label>Your Name</label>
+                <input type="text" name="customerName" placeholder="Enter your name" required>
+
+                <label>Phone Number</label>
+                <input type="text" name="customerPhone" placeholder="Enter your phone number" required>
+
+                <hr class="profile-divider">
+
                 <!-- TIME SLOT -->
                 <h2>Select Time</h2>
 
@@ -48,8 +59,8 @@
                             </option>
                         </#list>
                     </select>
-                    <#else>
-                        <p class="provider-empty-text">No available time slots.</p>
+                <#else>
+                    <p class="provider-empty-text">No available time slots.</p>
                 </#if>
 
                 <hr class="profile-divider">
@@ -65,8 +76,8 @@
                             </option>
                         </#list>
                     </select>
-                    <#else>
-                        <p class="provider-empty-text">No services available.</p>
+                <#else>
+                    <p class="provider-empty-text">No services available.</p>
                 </#if>
 
                 <hr class="profile-divider">
@@ -76,10 +87,10 @@
                     <button type="submit" class="provider-main-btn">
                         Book Appointment
                     </button>
-                    <#else>
-                        <button type="button" class="provider-main-btn" disabled>
-                            Booking Unavailable
-                        </button>
+                <#else>
+                    <button type="button" class="provider-main-btn" disabled>
+                        Booking Unavailable
+                    </button>
                 </#if>
 
             </form>
