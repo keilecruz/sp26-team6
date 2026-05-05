@@ -39,4 +39,13 @@ public class BookingService {
         return bookingRepository.findByBeauty_UserId(beautyId);
     }
 
+    public Booking confirmBooking(Long bookingId) {
+        Booking booking = bookingRepository.findById(bookingId)
+                .orElseThrow(() -> new RuntimeException("Booking not found"));
+
+        booking.setStatus("CONFIRMED");
+
+        return bookingRepository.save(booking);
+    }
+
 }
