@@ -16,7 +16,6 @@
 
         <nav class="login-nav">
             <a href="/index">Home</a>
-            <a href="#">About</a>
             <a href="/signup" class="login-signup-btn">Sign Up</a>
         </nav>
     </header>

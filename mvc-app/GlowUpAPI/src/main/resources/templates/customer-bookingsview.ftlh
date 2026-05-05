@@ -62,7 +62,7 @@
                                 <p>Status: ${b.status}</p>
 
                                 <!-- ACTIONS -->
-                                <div style="margin-top: 10px;">
+                                <div class="booking-actions">
 
                                     <!-- CANCEL -->
                                     <form action="/book/cancel" method="post" style="margin-bottom: 8px;">
@@ -73,7 +73,7 @@
                                     </form>
 
                                     <!-- REVIEW (placeholder for later) -->
-                                    <a href="/review/${b.beauty.userId}" class="provider-main-btn">
+                                    <a href="/review/${b.beauty.userId}" class="provider-main-btn review-btn">
                                         Write Review
                                     </a>
 

@@ -90,10 +90,19 @@
 
                             <a href="/provider/${p.userId}" class="provider-dashboard-link">
 
+                                <!-- IMAGE -->
+                                <#if p.profileImage?? && p.profileImage !="">
+                                    <img src="${p.profileImage}" class="provider-card-img">
+                                    <#else>
+                                        <img src="/photos/profilepic.png" class="provider-card-img">
+                                </#if>
+
+                                <!-- NAME -->
                                 <h3>
                                     ${p.businessName!"Beauty Professional"}
                                 </h3>
 
+                                <!-- SPECIALTY -->
                                 <p>
                                     ${p.specialty!"Beauty Services"}
                                 </p>

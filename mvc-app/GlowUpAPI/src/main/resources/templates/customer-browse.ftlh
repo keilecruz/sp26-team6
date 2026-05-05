@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlowUp Browse Professionals</title>
 
-    <!-- ✅ Use same design system -->
     <link rel="stylesheet" href="/provider.css">
 </head>
 
@@ -112,8 +111,8 @@
                                         View Profile
                                     </a>
 
-                                    <a href="/availability/${p.userId}" class="card-btn availability-btn">
-                                        Availability
+                                    <a href="/book/${p.userId}" class="card-btn">
+                                        Book Appointment
                                     </a>
 
                                 </div>
