@@ -13,20 +13,24 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // 👤 Customer (store ID for now)
+    // Customer info
     private Long customerId;
 
-    // 👩‍💼 Provider
+    private String customerName;
+
+    private String customerPhone;
+
+    // Provider
     @ManyToOne
     @JoinColumn(name = "beauty_id", nullable = false)
     private Beauty beauty;
 
-    // ⏰ Time slot (from Availability)
+    // Time slot from Availability
     @ManyToOne
     @JoinColumn(name = "availability_id", nullable = false)
     private Availability availability;
 
-    // 💄 Service
+    // Service
     @ManyToOne
     @JoinColumn(name = "service_id", nullable = false)
     private Service service;
