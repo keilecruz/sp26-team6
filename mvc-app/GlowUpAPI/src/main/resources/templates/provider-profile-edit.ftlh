@@ -40,7 +40,7 @@
                 <p>Default profile image</p>
             </div>
         </#if>
-
+        
         <form action="/provider-profile/update" method="post" class="provider-form">
 
             <label>Business Name</label>

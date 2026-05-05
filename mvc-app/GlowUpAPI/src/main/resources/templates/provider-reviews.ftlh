@@ -51,32 +51,34 @@
                 </p>
             </div>
 
-            <div class="add-review-box">
-                <h2>Add a Review</h2>
+            <#if roleString != "BEAUTY">
+                <div class="add-review-box">
+                    <h2>Add a Review</h2>
 
-                <form action="/review" method="post" class="provider-form">
+                    <form action="/review" method="post" class="provider-form">
 
-                    <input type="hidden" name="beautyId" value="${beauty.userId}">
+                        <input type="hidden" name="beautyId" value="${beauty.userId}">
 
-                    <label>Your Name</label>
-                    <input type="text" name="reviewerName" placeholder="Enter your name" required>
+                        <label>Your Name</label>
+                        <input type="text" name="reviewerName" placeholder="Enter your name" required>
 
-                    <label>Rating</label>
-                    <select name="rating" required>
-                        <option value="5">5 - Excellent</option>
-                        <option value="4">4 - Good</option>
-                        <option value="3">3 - Okay</option>
-                        <option value="2">2 - Poor</option>
-                        <option value="1">1 - Bad</option>
-                    </select>
+                        <label>Rating</label>
+                        <select name="rating" required>
+                            <option value="5">5 - Excellent</option>
+                            <option value="4">4 - Good</option>
+                            <option value="3">3 - Okay</option>
+                            <option value="2">2 - Poor</option>
+                            <option value="1">1 - Bad</option>
+                        </select>
 
-                    <label>Comment</label>
-                    <textarea name="comment" rows="4" placeholder="Write your review..." required></textarea>
+                        <label>Comment</label>
+                        <textarea name="comment" rows="4" placeholder="Write your review..." required></textarea>
 
-                    <button type="submit" class="provider-main-btn">Submit Review</button>
+                        <button type="submit" class="provider-main-btn">Submit Review</button>
 
-                </form>
-            </div>
+                    </form>
+                </div>
+            </#if>
 
             <hr class="profile-divider">
 
@@ -103,10 +105,30 @@
                 </#if>
             </div>
 
-            <div class="profile-bottom-actions">
-                <a href="/provider/${beauty.userId}" class="provider-back-button">
-                    ← Back to Profile
-                </a>
+            
+            <div class="provider-callout review-callout">
+
+                <#if roleString == "BEAUTY">
+                    <div>
+                        <h3>Keep track of your customer feedback</h3>
+                        <p>View your reviews and use customer feedback to improve your services.</p>
+                    </div>
+
+                    <div class="provider-callout-buttons">
+                        <a href="/provider-dashboard" class="provider-main-btn">← Back to Dashboard</a>
+                        <a href="/provider-profile" class="provider-main-btn">Back to Profile →</a>
+                    </div>
+                <#else>
+                    <div>
+                        <h3>Explore this professional’s reviews</h3>
+                        <p>Read customer feedback before choosing a service or booking an appointment.</p>
+                    </div>
+
+                    <div class="provider-callout-buttons">
+                        <a href="/provider/${beauty.userId}" class="provider-main-btn">← Back to Profile</a>
+                    </div>
+                </#if>
+
             </div>
 
         </section>

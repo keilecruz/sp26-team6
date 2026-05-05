@@ -29,16 +29,53 @@
             <p>View customer booking requests and appointments here.</p>
         </div>
 
-        <div class="booking-empty-card">
-            <div class="booking-empty-icon">📅</div>
+        <#if bookings?size == 0>
+            <div class="booking-empty-card">
+                <div class="booking-empty-icon">📅</div>
 
-            <h2>No bookings yet</h2>
+                <h2>No bookings yet</h2>
 
-            <p>
-                When customers book your services, their appointment details will appear here.
-            </p>
+                <p>
+                    When customers book your services, their appointment details will appear here.
+                </p>
+            </div>
+        <#else>
+            <div class="provider-list">
+                <#list bookings as booking>
+                    <div class="provider-service-row booking-row">
 
-            <a href="/provider-dashboard" class="provider-main-btn">Back to Dashboard</a>
+                        <div class="provider-service-left">
+                            <div class="provider-service-icon">📅</div>
+
+                            <div>
+                                <h3>${booking.service.name!"Booked Service"}</h3>
+                                <p>
+                                    Availability:
+                                    ${booking.availability.date!"No date"}
+                                    at
+                                    ${booking.availability.time!"No time"}
+                                </p>
+                                <p>Status: ${booking.status!"PENDING"}</p>
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                </#list>
+            </div>
+        </#if>
+
+        <div class="provider-callout booking-callout">
+            <div>
+                <h3>Stay ready for your appointments</h3>
+                <p>Review your customer bookings and prepare for upcoming services.</p>
+            </div>
+
+            <div class="provider-callout-buttons">
+                <a href="/provider-dashboard" class="provider-main-btn">← Back to Dashboard</a>
+                <a href="/provider-profile" class="provider-main-btn">Back to Profile →</a>
+            </div>
         </div>
 
     </section>

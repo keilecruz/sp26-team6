@@ -12,6 +12,8 @@ import com.example.GlowUpAPI.service.ReviewService;
 import com.example.GlowUpAPI.service.ServiceService;
 import com.example.GlowUpAPI.service.UserService;
 import com.example.GlowUpAPI.entity.User;
+import com.example.GlowUpAPI.entity.Booking;
+import com.example.GlowUpAPI.service.BookingService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -42,6 +44,9 @@ public class ProviderViewController {
 
     @Autowired
     private ReviewService reviewService;
+
+    @Autowired
+    private BookingService bookingService;
 
     private Long getLoggedInBeautyId(HttpSession session) {
         Object userId = session.getAttribute("loggedInUserId");
@@ -183,59 +188,63 @@ public class ProviderViewController {
     }
 
     @GetMapping("/provider-bookings")
-    public String showProviderBookings(HttpSession session) {
+    public String showProviderBookings(Model model, HttpSession session) {
         Long beautyId = getLoggedInBeautyId(session);
 
         if (beautyId == null) {
             return "redirect:/login";
         }
 
+        List<Booking> bookings = bookingService.getByBeautyId(beautyId);
+        model.addAttribute("bookings", bookings);
+
         return "provider-bookings";
     }
 
+
+    
     @GetMapping("/provider-reviews")
-    public String showProviderReviews(@RequestParam Long beautyId,
-            Model model,
-            HttpSession session) {
+    public String showProviderReviews(@RequestParam(required = false) Long beautyId,
+                                  Model model,
+                                  HttpSession session) {
 
-        User user = (User) session.getAttribute("loggedInUser");
+        if (beautyId == null) {
+            beautyId = getLoggedInBeautyId(session);
+        }
 
-        if (user == null) {
+        if (beautyId == null) {
             return "redirect:/login";
         }
 
-        model.addAttribute("roleString", user.getRole().name());
-
         Beauty beauty = beautyService.getBeautyById(beautyId)
-                .orElseThrow(() -> new RuntimeException("Beauty profile not found"));
+            .orElseThrow(() -> new RuntimeException("Beauty profile not found"));
 
         List<Review> reviews = reviewService.getReviewsByBeautyId(beautyId);
-
-        double averageRating = reviews.stream()
-                .mapToInt(Review::getRating)
-                .average()
-                .orElse(0.0);
+        double averageRating = calculateAverageRating(reviews);
+        Object role = session.getAttribute("loggedInRole");
 
         model.addAttribute("beauty", beauty);
         model.addAttribute("reviews", reviews);
         model.addAttribute("averageRating", averageRating);
         model.addAttribute("reviewCount", reviews.size());
+        model.addAttribute("roleString", role != null ? role.toString() : "CUSTOMER");
 
         return "provider-reviews";
     }
 
     @GetMapping("/provider/{beautyId}/reviews")
-    public String showPublicProviderReviews(@PathVariable Long beautyId, Model model) {
+    public String showPublicProviderReviews(@PathVariable Long beautyId, Model model, HttpSession session) {
         Beauty beauty = beautyService.getBeautyById(beautyId)
                 .orElseThrow(() -> new RuntimeException("Beauty profile not found"));
 
         List<Review> reviews = reviewService.getReviewsByBeautyId(beautyId);
         double averageRating = calculateAverageRating(reviews);
+        Object role = session.getAttribute("loggedInRole");
 
         model.addAttribute("beauty", beauty);
         model.addAttribute("reviews", reviews);
         model.addAttribute("averageRating", averageRating);
-        model.addAttribute("reviewCount", reviews.size());
+        model.addAttribute("roleString", role != null ? role.toString() : "CUSTOMER");
 
         return "provider-reviews";
     }
@@ -257,7 +266,7 @@ public class ProviderViewController {
 
         reviewService.createReview(review);
 
-        return "redirect:/provider/" + beautyId + "/reviews";
+        return "redirect:/provider/" + beautyId + beautyId;
     }
 
     @PostMapping("/provider-reviews/add")

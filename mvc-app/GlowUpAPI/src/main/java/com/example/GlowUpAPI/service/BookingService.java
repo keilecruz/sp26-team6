@@ -34,5 +34,9 @@ public class BookingService {
     public void deleteBooking(Long bookingId) {
         bookingRepository.deleteById(bookingId);
     }
+    
+    public List<Booking> getByBeautyId(Long beautyId) {
+        return bookingRepository.findByBeauty_UserId(beautyId);
+    }
 
 }
