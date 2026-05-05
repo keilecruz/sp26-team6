@@ -30,6 +30,7 @@
         </div>
 
         <#if bookings?size == 0>
+
             <div class="booking-empty-card">
                 <div class="booking-empty-icon">📅</div>
 
@@ -39,9 +40,13 @@
                     When customers book your services, their appointment details will appear here.
                 </p>
             </div>
+
         <#else>
+
             <div class="provider-list">
+
                 <#list bookings as booking>
+
                     <div class="provider-service-row booking-row">
 
                         <div class="provider-service-left">
@@ -49,21 +54,34 @@
 
                             <div>
                                 <h3>${booking.service.name!"Booked Service"}</h3>
+
                                 <p>
                                     Availability:
                                     ${booking.availability.date!"No date"}
                                     at
                                     ${booking.availability.time!"No time"}
                                 </p>
+
                                 <p>Status: ${booking.status!"PENDING"}</p>
                             </div>
                         </div>
 
-                        
+                        <div class="booking-action-area">
+                            <#if booking.status?? && booking.status == "CONFIRMED">
+                                <p class="booking-confirmed-text">Confirmed</p>
+                            <#else>
+                                <a href="/provider-bookings/confirm/${booking.id}" class="provider-main-btn booking-confirm-btn">
+                                    Confirm Booking
+                                </a>
+                            </#if>
+                        </div>
 
                     </div>
+
                 </#list>
+
             </div>
+
         </#if>
 
         <div class="provider-callout booking-callout">

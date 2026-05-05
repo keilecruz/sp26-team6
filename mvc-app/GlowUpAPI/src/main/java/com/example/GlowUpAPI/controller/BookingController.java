@@ -72,7 +72,7 @@ public class BookingController {
         booking.setBeauty(beauty);
         booking.setAvailability(availability);
         booking.setService(service);
-        booking.setStatus("CONFIRMED");
+        booking.setStatus("PENDING");
 
         bookingService.save(booking);
 

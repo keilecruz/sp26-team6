@@ -772,5 +772,22 @@ body.provider-page {
     font-size: 15px;
 }
 .booking-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
+}
+
+.booking-action-area {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.booking-confirm-btn {
+    white-space: nowrap;
+    padding: 14px 22px;
+    font-size: 15px;
+}
+
+.booking-confirmed-text {
+    color: #198754;
+    font-weight: 800;
 }
