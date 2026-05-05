@@ -84,4 +84,51 @@ public class ReviewPageController {
 
         return "redirect:/customer-reviews";
     }
+
+    @GetMapping("/review/edit/{id}")
+    public String showEditReview(@PathVariable Long id,
+            HttpSession session,
+            Model model) {
+
+        User user = (User) session.getAttribute("loggedInUser");
+
+        if (user == null || user.getRole() != User.Role.CUSTOMER) {
+            return "redirect:/login";
+        }
+
+        Review review = reviewService.getReviewById(id).orElse(null);
+
+        // 🔒 Prevent editing others' reviews
+        if (review == null || !review.getCustomerId().equals(user.getUserId())) {
+            return "redirect:/customer-reviews";
+        }
+
+        model.addAttribute("review", review);
+        return "edit-review";
+    }
+
+    @PostMapping("/review/update")
+    public String updateReview(@RequestParam Long reviewId,
+            @RequestParam Integer rating,
+            @RequestParam String comment,
+            HttpSession session) {
+
+        User user = (User) session.getAttribute("loggedInUser");
+
+        if (user == null || user.getRole() != User.Role.CUSTOMER) {
+            return "redirect:/login";
+        }
+
+        Review review = reviewService.getReviewById(reviewId).orElse(null);
+
+        // 🔒 Prevent editing others' reviews
+        if (review != null && review.getCustomerId().equals(user.getUserId())) {
+            review.setRating(rating);
+            review.setComment(comment);
+            reviewService.save(review);
+        }
+
+        return "redirect:/customer-reviews";
+    }
+
 }

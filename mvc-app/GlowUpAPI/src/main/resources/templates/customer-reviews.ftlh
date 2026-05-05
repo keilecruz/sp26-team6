@@ -46,30 +46,28 @@
 
                             <div class="provider-dashboard-link">
 
-                                <!-- PROVIDER NAME -->
                                 <h3>
                                     ${r.beauty.businessName!"Beauty Professional"}
                                 </h3>
 
-                                <!-- RATING -->
                                 <p>
                                     Rating: ⭐ ${r.rating}
                                 </p>
 
-                                <!-- COMMENT -->
                                 <p>
                                     ${r.comment!""}
                                 </p>
 
-                                <!-- REVIEWER -->
                                 <p style="font-size: 12px; opacity: 0.7;">
                                     By: ${r.reviewerName!"You"}
                                 </p>
 
-                                <!-- ACTIONS -->
-                                <div style="margin-top: 10px;">
+                                <div class="review-actions">
 
-                                    <!-- DELETE REVIEW -->
+                                    <a href="/review/edit/${r.reviewId}" class="provider-main-btn">
+                                        Edit
+                                    </a>
+
                                     <form action="/review/delete" method="post">
                                         <input type="hidden" name="reviewId" value="${r.reviewId}">
                                         <button type="submit" class="provider-main-btn">
