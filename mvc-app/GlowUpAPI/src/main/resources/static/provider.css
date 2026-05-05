@@ -753,3 +753,24 @@ body.provider-page {
     padding: 14px 20px;
     font-size: 15px;
 }
+.review-callout {
+    margin-top: 34px;
+}
+
+.review-callout .provider-callout-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+}
+
+.review-callout .provider-main-btn {
+    white-space: nowrap;
+    padding: 14px 20px;
+    font-size: 15px;
+}
+.booking-row {
+    grid-template-columns: 1fr;
+}
