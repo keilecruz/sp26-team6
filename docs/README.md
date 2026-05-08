@@ -17,7 +17,7 @@ This file contains the requirements testing plan. It explains how the main custo
 ### UML-case.png
 This image shows the use case diagram for the GlowUp system. It explains the main actions available to customers and providers.
 
-### UML_class_Design.png
+### UML_Class.png
 This image shows the class design for the system. It explains the main entities and relationships used in the project.
 
 ### GlowUp Presentation.pptx
