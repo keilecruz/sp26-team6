@@ -8,7 +8,7 @@ GlowUp is a web-based beauty and grooming service platform. Customers can browse
 
 ## Documentation Files
 
-### GlowUp SRS
+### GlowUp_SRS.md
 This file contains the Software Requirements Specification for the project. It includes the project vision, glossary, user roles, scope, functional requirements, non-functional requirements, assumptions, constraints, milestones, and change management plan.
 
 ### GlowUp_Reqs_Testing_Plan.md
