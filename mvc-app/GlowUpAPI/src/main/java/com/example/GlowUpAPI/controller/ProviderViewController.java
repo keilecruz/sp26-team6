@@ -427,4 +427,17 @@ public class ProviderViewController {
         return "redirect:/availability-page";
     }
 
+    @GetMapping("/provider-bookings/confirm/{id}")
+    public String confirmBooking(@PathVariable Long id, HttpSession session) {
+        Long beautyId = getLoggedInBeautyId(session);
+
+        if (beautyId == null) {
+            return "redirect:/login";
+        }
+
+        bookingService.confirmBooking(id);
+
+        return "redirect:/provider-bookings";
+    }
+
 }

@@ -40,7 +40,7 @@
 3. Review is saved  
 4. Customer edits or deletes review  
 
-### 6. US-PROV-001 — Provider Manage Profile
+#### 6. US-PROV-001 — Provider Manage Profile
 1. Provider logs in  
 2. Provider edits business information  
 3. System saves updates

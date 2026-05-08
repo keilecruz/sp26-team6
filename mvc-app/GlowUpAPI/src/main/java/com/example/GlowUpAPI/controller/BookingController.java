@@ -47,6 +47,8 @@ public class BookingController {
     public String createBooking(@RequestParam Long beautyId,
             @RequestParam Long availabilityId,
             @RequestParam Long serviceId,
+            @RequestParam String customerName,
+            @RequestParam String customerPhone,
             HttpSession session) {
 
         User user = (User) session.getAttribute("loggedInUser");
@@ -69,10 +71,12 @@ public class BookingController {
 
         Booking booking = new Booking();
         booking.setCustomerId(user.getUserId());
+        booking.setCustomerName(customerName);
+        booking.setCustomerPhone(customerPhone);
         booking.setBeauty(beauty);
         booking.setAvailability(availability);
         booking.setService(service);
-        booking.setStatus("CONFIRMED");
+        booking.setStatus("PENDING");
 
         bookingService.save(booking);
 
