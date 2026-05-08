@@ -8,7 +8,7 @@
 ---
 
 ## 1. Overview
-**Vision.** GlowUp is a web-based platform that allows customers to connect with beauty and grooming pros. Customers can view portfolios, services, book appointments, and also leave reviews. Beauty and grooming pros can manage their services, availability, client appointments, and also reply to customer reviews. Administrators can oversee platform activity, manage user accounts, and ensure that the platform remains in compliance with its policies to provide a safe and reliable environment.
+**Vision.** GlowUp is a web-based platform that allows customers to connect with beauty and grooming pros. Customers can view portfolios, services, book appointments, and also leave reviews. Beauty and grooming pros can manage their services, availability, client appointments, and also reply to customer reviews. 
 
 **Glossary** 
 - **Portfolio:** Collection of images, certifications, and past work on display in provider's profile.
@@ -21,12 +21,10 @@
 **Primary Users / Roles.**
 - **Customer (client seeking beauty/grooming service)** — Discover providers; book and manage appointments; leave reviews. 
 - **Provider (licensed beauty/grooming professional)** — Publish services and portfolios; manage availability and bookings; respond to reviews; track engagement.
-- **SysAdmin (optional)** — Manage user access; moderate services and reviews; monitor platform activity.
 
 **Scope (this semester).**
 - Browse through providers profiles, portfolios, and services with filter/sorting.
 - Book appointments and manage bookings (cancel/reschedule).
-- Admin user access management and review moderation workflow.
 - Provider onboarding; create/edit/suspend service listing; update availability slots.
 - Reviews with basic moderation (customer write;provider reply). 
 
@@ -103,35 +101,34 @@
     Then  my provider profile is created and my profile will be visible to the customers on the platform.
   ```
 
-- **US‑PROV‑002 — <Manage service availability>**  
+- **US‑PROV‑002 — Manage service availability>**  
   _Story:_ As a provider, I want to set and update my available time slots, so that customers can book appointments only during times I am available.
   _Acceptance:_
   ```gherkin
   Scenario: Update availability
   Given the provider is logged into their account
   When the provider adds or edits available time slots
-  Then the updated availability is visible to customers searching for services
+  Then the updated availability is visible to customers searching for services.
   ```
 
-### 2.3 SysAdmin Stories
-- **US‑ADMIN‑001 — Suspend a User account **  
-  _Story:_ As a sysadmin, I want to manage user accounts (activate, suspend, or deactivate) so that I can maintain platform security and enforce policies. 
+  - **US-PROV-003 — Upload Portfolio Content**  
+  _Story:_ As a provider, I want to upload portfolio images so that customers can view examples of my work.
   _Acceptance:_
   ```gherkin
-  Scenario: Suspend a user account
-    Given the user is logged in admin dashboard and user has violated the platform policies
-    When  the administrator selects the suspend option
-    Then  the user is marked as suspened and the user can no longer log into the platform
+  Scenario: Upload portfolio image
+  Given the provider is logged in
+  When the provider uploads a portfolio image
+  Then the image is displayed on the provider profile.
   ```
 
-- **US‑ADMIN‑002 — <Moderate user reviews>**  
-  _Story:_ As a system administrator, I want to review and remove inappropriate customer reviews, so that the platform remains safe and respectful for all users
+  - **US-PROV-004 — Reply to Reviews**  
+  _Story:_ As a provider, I want to reply to customer reviews so that I can respond to feedback publicly.
   _Acceptance:_
   ```gherkin
-  Scenario: Remove inappropriate review
-  Given the administrator is logged into the admin dashboard
-  When the administrator selects a review that violates guidelines and removes it
-  Then the review is no longer visible on the platform
+  Scenario: Reply to review
+  Given a customer review exists
+  When the provider submits a response
+  Then the response appears under the review.
   ```
 
 ---

@@ -16,8 +16,6 @@
    - [Portfolio Management](#Portfolio-Management)
    - [Availability Management](#availability-Management)
    - [Review Management](#Review-Management)
-   - [Admin Management](#Admin-Management)
-   - [Audit Logs](#AuditLog-Management)
 5. [Use Case Mapping](#5-use-case-mapping)
 
 ---
@@ -30,7 +28,6 @@ The GlowUP API back-end API provides an interface for managing :
 - **Portfolio**: Portfolio that is maintained by Professional and contains their description.
 - **Availability**: Professionals availability that is inspected by the customer.
 - **Reviews**: Customer feedback after session with the Professional
-- **Audit-Logs**: Admin maintains the system settings
 
 ---
 ## 2. User Roles
@@ -41,7 +38,6 @@ This API supports three main roles
 |------|-------------|-------------------------|
 | **CUSTOMER** | Consumer of beauty services | Browse portfolio, reviews, select service availability |
 | **BEAUTY-PROFESSIONAL** | Provider for beauty services | Manage portfolio/availability, Respond to reviews |
-| **ADMIN** | Platform administrator | Manage access, moderate content, view analytics |
 
 ---
 ## 3. UML Class Diagram
@@ -50,7 +46,7 @@ This API supports three main roles
 
 ## 4. API Endpoints
 
-These use-cases are use specifically with the endpoints ('/customer', '/beauty', '/admin')
+These use-cases are use specifically with the endpoints ('/customer', '/beauty')
 
 ### Customer-Management
 #### Create Customer
@@ -571,147 +567,6 @@ DELETE /availabilities/{id}
 **Status Code:** `200 OK` or `404 Not Found`
 
 ---
-
-### Admin-Management
-
-#### Creating an admin
-**Endpoint:** `POST /admins`
-**Use Case:** US-admins-001 (Creating an admin)
-**Description:** Create an admin
-
-```http
-POST /admins
-Content-Type: application/json
-
-{
- "adminName": "System Admin",
-  "email": "admin@email.com",
-  "password": "admin123"
-}
-```
-
-**Response:**
-```json
-{
- "adminName": "System Admin",
-  "email": "admin@email.com",
-  "password": "admin123"
-}
-```
-
-**Status Code:** `201 Created`
-
----
-
-#### Getting all admins
-**Endpoint:** `GET/admins`
-**Use Case:** US-ADMIN-002 (View All Admins)
-**Description:** Getting all admins
-
-```http
-GET /admins
-
-```
-
-**Status Code:** `200 OK` or `404 Not Found`
-
----
-
-#### Getting admin by ID
-**Endpoint:** `GET/admins/{id}`
-**Use Case:** US-ADMIN-003 (View Admin by ID)
-**Description:** Getting a specific admin through id
-
-```http
-GET /admins/{id}
-
-```
-
-**Status Code:** `200 OK` or `404 Not Found`
-
----
-
-#### Deleting admin
-**Endpoint:** `DELETE/admins/{id}`
-**Use Case:** US-ADMIN-004 (Delete Admin)
-**Description:** Deleting an admin 
-
-```http
-Delete /admins/{id}
-
-```
-
-**Status Code:** `200 OK` or `404 Not Found`
-
-
----
-### AuditLog-Management
-
-#### Creating an Auditlog
-**Endpoint:** `POST /auditlogs`
-**Use Case:** US-AUDIT-001 (Create Audit Log)
-**Description:** Create an auditlog
-
-```http
-POST /auditlogs
-Content-Type: application/json
-
-{
-"action": "DELETE",
-  "entityType": "SERVICE",
-  "entityId": 5,
-  "details": "Removed inappropriate service",
-  "admin": {
-    "userId": 1
-  }
-}
-```
-
-**Response:**
-```json
-{
- "action": "DELETE",
-  "entityType": "SERVICE",
-  "entityId": 5,
-  "details": "Removed inappropriate service",
-  "admin": {
-    "userId": 1
-  }
-}
-```
-
-**Status Code:** `201 Created`
-
----
-
-#### Getting all logs
-**Endpoint:** `GET/auditlogs`
-**Use Case:** US-AUDIT-002 (View All Audit Logs)
-**Description:** Getting all auditlogs
-
-```http
-GET /auditlogs
-
-```
-
-**Status Code:** `200 OK` or `404 Not Found`
-
-
----
-
-#### Getting logs by admin
-**Endpoint:** `GET/auditlogs/admin/{adminId}`
-**Use Case:** US-AUDIT-003 (View Logs by Admin)
-**Description:** Getting auditlogs with adminID
-
-```http
-GET /auditlogs/admin/{adminId}
-
-```
-
-**Status Code:** `200 OK` or `404 Not Found`
-
----
 ## 5. Use Case Mapping
 
 The API endpoints are meant to follow these SRS use cases : 
@@ -731,9 +586,3 @@ The API endpoints are meant to follow these SRS use cases :
 | **US-BEAUTY-004** | Set and manage availability | `POST /availabilities`, `GET /availabilities`, `GET /availabilities/beauty/{beautyId}`, `DELETE /availabilities/{id}` |
 | **US-BEAUTY-005** | Respond to reviews | `PUT /reviews/{id}` |
 
-| Use Case | Description | Related Endpoints |
-|----------|-------------|-------------------|
-| **US-ADMIN-001** | Manage users (view/update/delete) | `GET /customers`, `GET /beauties`, `GET /admins`, `DELETE /customers/{id}`, `DELETE /beauties/{id}`, `DELETE /admins/{id}` |
-| **US-ADMIN-002** | Moderate services | `GET /services`, `DELETE /services/{id}` |
-| **US-ADMIN-003** | Moderate reviews | `GET /reviews`, `DELETE /reviews/{id}` |
-| **US-ADMIN-004** | Track system activity (audit logs) | `POST /auditlogs`, `GET /auditlogs`, `GET /auditlogs/admin/{adminId}` |
