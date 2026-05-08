@@ -20,9 +20,8 @@ Glowup is a mobile/web application that allows customers to explore, discover, a
     3. Subscribe to available services - Book an appointment with selected providers
     4. Write reviews for subscribed services - Leave ratings and reviews 
     
-2. Provider (Professional hair stylist/barbers/makeup artists)
-    1. Create/modify/remove provider profile - Manage professional profile, bio, and credentials
-    2. Create services - Add services with description, pricing, and availability 
-    3. View customer statistics - Track appointments, rating, and customer engagement
-    4. Reply to reviews - Respond to customer feedback publicly
-
+2. Provider (Beauty Professional: hairstylist, barber, makeup artist, nail/lash artist)
+    1. Manage provider profile - Create and update the professional business profile, including business name, bio, profile image, and sample work gallery.
+    2. Manage services and availability - Add, edit, and delete offered services with descriptions and pricing, and create or remove available time slots for customer booking.
+    3. View customer reviews and ratings - See customer reviews connected to the provider profile and view the average rating based on all submitted reviews.
+    4. View and confirm bookings - View customer appointment bookings, including selected service, availability, customer name, and phone number, then confirm pending bookings.
