@@ -1,34 +1,34 @@
-
-**Project Name:** GlowUp
-**Team:** Keile Cruz-Maldonado ; Maisha Fyruz
-**Course:** CSC 340
-**Version:** 1.0
+**Project Name:** GlowUp  
+**Team:** Keile Cruz-Maldonado; Maisha Fyruz  
+**Course:** CSC 340  
+**Version:** 1.0  
 **Date:** 2026-02-12
 
 ---
 
 ## 1. Overview
-**Vision.** GlowUp is a web-based platform that allows customers to connect with beauty and grooming pros. Customers can view portfolios, services, book appointments, and also leave reviews. Beauty and grooming pros can manage their services, availability, client appointments, and also reply to customer reviews. 
+
+**Vision.** GlowUp is a web-based platform that allows customers to connect with beauty and grooming professionals. Customers can view portfolios, services, book appointments, and leave reviews. Beauty and grooming professionals can manage their professional profile, services, availability, client appointments, sample work gallery, and view customer reviews and ratings.
 
 **Glossary** 
-- **Portfolio:** Collection of images, certifications, and past work on display in provider's profile.
-- **Service listing:** Published beauty and grooming service that includes description, price, and time.
-- **Availabiliry Slot:** Date and time window that provide accepts bookings.
-- **Appointment** Scheduled service session between customer and provider.
-- **Review:** Customers rating and written feedback of the completed service.
-- **Engagement:** Platform activity that provides metrics on bookings, ratings, and review responses.
+- **Sample Work Gallery:** Collection of provider-uploaded image paths that display examples of the provider’s past beauty or grooming work.
+- **Service Listing:** Published beauty and grooming service that includes description, price, and time.
+- **Availability Slot:** Date and time window that a provider creates so customers can book appointments.
+- **Appointment:** Scheduled service session between customer and provider.
+- **Review:** Customer rating and written feedback about the completed service.
+- **Booking Status:** Appointment status that begins as pending and can be confirmed by the provider.
 
-**Primary Users / Roles.**
-- **Customer (client seeking beauty/grooming service)** — Discover providers; book and manage appointments; leave reviews. 
-- **Provider (licensed beauty/grooming professional)** — Publish services and portfolios; manage availability and bookings; respond to reviews; track engagement.
+**Primary Users / Roles**
+- **Customer (client seeking beauty/grooming service)** — Discover providers; book and manage appointments; leave reviews.
+- **Provider (beauty/grooming professional)** — Manage professional profile, sample work gallery, services, availability, bookings, and customer reviews/ratings.
 
-**Scope (this semester).**
-- Browse through providers profiles, portfolios, and services with filter/sorting.
-- Book appointments and manage bookings (cancel/reschedule).
-- Provider onboarding; create/edit/suspend service listing; update availability slots.
-- Reviews with basic moderation (customer write;provider reply). 
+**Scope (this semester)**
+- Browse through provider profiles, sample work galleries, and services with filtering/sorting.
+- Book appointments and manage bookings, including canceling customer bookings and confirming provider-side bookings.
+- Provider onboarding; create/edit provider profile; manage sample work gallery; create, edit, and delete service listings; update availability slots.
+- Reviews and ratings where customers can submit reviews and providers can view customer reviews and average rating.
 
-**Out of scope (deferred).**
+**Out of scope (deferred)**
 - Online payments and refund processing.
 - SMS/email notification.
 - Mobile app version.
@@ -38,10 +38,10 @@
 
 ## 2. Functional Requirements (User Stories)
 
-
 ### 2.1 Customer Stories
-- **US‑CUST‑001 — Register and Manage Profile**  
-  _Story:_ As a customer, I want to create and manage my profile (name, contact info, preferred services) so that I can book appointments and write reviews of my experience.
+
+- **US-CUST-001 — Register and Manage Profile**  
+  _Story:_ As a customer, I want to create and manage my profile, including name, contact information, and preferred services, so that I can book appointments and write reviews of my experience.  
   _Acceptance:_
   ```gherkin
   Scenario: Register with valid details
@@ -50,116 +50,130 @@
     Then  my customer profile is created and visible on my profile
   ```
 
-- **US‑CUST‑002 — Browse providers Profile and Portfolio**  
-  _Story:_ As a customer, I want to browse the providers profile, portfolios, and service listings so that I can evaluate the providers experience before booking.
+- **US-CUST-002 — Browse Provider Profile and Portfolio**  
+  _Story:_ As a customer, I want to browse provider profiles, portfolios, and service listings so that I can evaluate the provider’s experience before booking.  
   _Acceptance:_
   ```gherkin
   Scenario: View provider profile
     Given multiple providers exist on the platform
-    When  I select a providers profile
-    Then  I can view the providers portfolio and see services, pricing, and ratings.
+    When  I select a provider profile
+    Then  I can view the provider’s portfolio and see services, pricing, and ratings
   ```
 
-- **US‑CUST‑003 — Filter and Search Services**  
-  _Story:_ As a customer, I want to filter and search services by category, price, rating, and availability, so that I can find services that fit my needs and budget.
+- **US-CUST-003 — Filter and Search Services**  
+  _Story:_ As a customer, I want to filter and search services by category, price, rating, and availability, so that I can find services that fit my needs and budget.  
   _Acceptance:_
   ```gherkin
-  Scenario: Filter by category and sort by rating 
+  Scenario: Filter by category and sort by rating
     Given multiple services exist in different categories
-    When  filter by category "Women Haircuts" and I sort rating "High/Low"
-    Then  I can only see Women hair styling options that are ordered by Highest rating first.
+    When  I filter by category "Women Haircuts" and sort by rating "High/Low"
+    Then  I can only see women hair styling options ordered by highest rating first
   ```
 
-  - **US‑CUST‑004 — Book Appointment**  
-  _Story:_ As a customer, I want to book an available time slot, so that I can secure an appointment with a provider. 
+- **US-CUST-004 — Book Appointment**  
+  _Story:_ As a customer, I want to book an available time slot, so that I can secure an appointment with a provider.  
   _Acceptance:_
   ```gherkin
   Scenario: Book an available time slot
-    Given I am logged in and a provider has provide times slots
+    Given I am logged in and a provider has available time slots
     When  I select a date and time and confirm booking
-    Then  the appointment is saved in the system and it appears on my dashboard and the provider is notified.
+    Then  the appointment is saved in the system and appears on my dashboard
   ```
-  - **US‑CUST‑005 — Write a Review**  
-  _Story:_ As a customer, I want to leave a rating and a written review after my appointment, so that I can share my experience with other customers.
+
+- **US-CUST-005 — Write a Review**  
+  _Story:_ As a customer, I want to leave a rating and a written review after my appointment, so that I can share my experience with other customers.  
   _Acceptance:_
   ```gherkin
   Scenario: Submit review for completed appointment
     Given I have completed an appointment
     When  I submit a rating and written review
-    Then  the review is published on the provider's profile and the provider can view and respont to it.
+    Then  the review is published on the provider's profile and the provider can view it
   ```
-
 
 ### 2.2 Provider Stories
-- **US‑PROV‑001 — Register and Set up Professional Profile**  
-  _Story:_ As a provider, I want to create and manage my professional profile (bio, certifications, portfolio images and service details) so that customers can evaluate my experience and book my services.
+
+- **US-PROV-001 — Register and Manage Professional Profile**  
+  _Story:_ As a provider, I want to create and manage my professional business profile, including business name, bio, profile image, and sample work gallery, so that customers can evaluate my work before booking.  
   _Acceptance:_
   ```gherkin
-  Scenario: Create a Provider Profile
-    Given I am not registered as a provider 
-    When  I sign up with the required personal information 
-    Then  my provider profile is created and my profile will be visible to the customers on the platform.
+  Scenario: Create and update provider profile
+    Given I am logged in as a provider
+    When  I update my business name, bio, profile image, or sample work gallery
+    Then  my updated provider profile is saved and visible on my provider profile page
   ```
 
-- **US‑PROV‑002 — Manage service availability>**  
-  _Story:_ As a provider, I want to set and update my available time slots, so that customers can book appointments only during times I am available.
+- **US-PROV-002 — Manage Services**  
+  _Story:_ As a provider, I want to create, edit, and delete my services, so that customers can see what services I offer and the prices before booking.  
   _Acceptance:_
   ```gherkin
-  Scenario: Update availability
-  Given the provider is logged into their account
-  When the provider adds or edits available time slots
-  Then the updated availability is visible to customers searching for services.
+  Scenario: Manage provider services
+    Given I am logged in as a provider
+    When  I create, edit, or delete a service
+    Then  the updated service information is saved and connected to my provider account
+  ```
+- **US-PROV-003 — Manage Availability**  
+  _Story:_ As a provider, I want to create and delete availability slots, so that customers can book appointments only during the times I am available.
+  _Acceptance:_
+  ```gherkin
+  Scenario: Manage provider availability
+    Given I am logged in as a provider
+    When  I create or delete an availability slot
+    Then  the updated availability information is saved and connected to my provider account
+  ```
+- **US-PROV-004 — View Customer Reviews and Average Rating**  
+  _Story:_ As a provider, I want to view customer reviews and my average rating, so that I can understand customer feedback about my services.  
+  _Acceptance:_
+  ```gherkin
+  Scenario: View customer reviews
+    Given customers have submitted reviews for my provider profile
+    When  I open the reviews page
+    Then  I can see all customer reviews and the average rating for my provider account
   ```
 
-  - **US-PROV-003 — Upload Portfolio Content**  
-  _Story:_ As a provider, I want to upload portfolio images so that customers can view examples of my work.
+- **US-PROV-005 — View and Confirm Customer Bookings**  
+  _Story:_ As a provider, I want to view customer bookings and confirm pending appointments, so that customers know their appointment has been accepted.  
   _Acceptance:_
   ```gherkin
-  Scenario: Upload portfolio image
-  Given the provider is logged in
-  When the provider uploads a portfolio image
-  Then the image is displayed on the provider profile.
-  ```
-
-  - **US-PROV-004 — Reply to Reviews**  
-  _Story:_ As a provider, I want to reply to customer reviews so that I can respond to feedback publicly.
-  _Acceptance:_
-  ```gherkin
-  Scenario: Reply to review
-  Given a customer review exists
-  When the provider submits a response
-  Then the response appears under the review.
+  Scenario: Confirm pending booking
+    Given a customer has booked one of my services
+    When  I open my bookings page and click confirm booking
+    Then  the booking status changes from PENDING to CONFIRMED
   ```
 
 ---
 
-## 3. Non‑Functional Requirements (make them measurable)
+## 3. Non-Functional Requirements
+
 - **Performance:** The system should load main pages within 3 seconds under normal internet conditions.
-- **Availability/Reliability:** The application should be available at least 99% of the time during the semester demonstration period.
-- **Security/Privacy:** User accounts must require secure login authentication, and sensitive information such as passwords must not be stored in plain text. No real payment information will be stored in this prototype.
-- **Usability:** The interface should be easy to navigate, readable on mobile and desktop devices, and provide clear buttons and labels for booking services.
+- **Availability/Reliability:** The application should be available during the semester demonstration period and run consistently for the final demo.
+- **Security/Privacy:** User accounts require login authentication, role-based access, and no real payment information will be stored in this prototype.
+- **Usability:** The interface should be easy to navigate, readable on desktop devices, and provide clear buttons and labels for profile management, services, availability, reviews, and booking actions.
 
 ---
 
 ## 4. Assumptions, Constraints, and Policies
+
 - The system is a semester project prototype and will not include full production-level features.
-- Real payment processing will not be implemented; payments are simulated only.
+- Real payment processing will not be implemented in this prototype.
 - Users must create an account before booking or reviewing services.
-- Service providers are responsible for managing their own availability and service details.
+- Service providers are responsible for managing their own profile, services, availability, and booking confirmations.
 - The project must follow UNCG academic integrity policies and appropriate content guidelines.
-- Development is limited to the technologies required in CSC 340 (Java, REST API, PostgreSQL, and web interface).
+- Development is limited to the technologies required in CSC 340, including Java, Spring Boot, PostgreSQL, and a web interface.
+
 ---
 
-## 5. Milestones (course‑aligned)
-- **M2 Requirements** — this file + stories opened as issues. 
-- **M3 High‑fidelity prototype** — core customer/provider flows fully interactive. 
-- **M4 Design** — architecture, schema, API outline. 
-- **M5 Backend API** — key endpoints + tests. 
-- **M6 Increment** — ≥2 use cases end‑to‑end. 
-- **M7 Final** — complete system & documentation. 
+## 5. Milestones (course-aligned)
+
+- **M2 Requirements** — this file + stories opened as issues.
+- **M3 High-fidelity prototype** — core customer/provider flows fully interactive.
+- **M4 Design** — architecture, schema, API outline.
+- **M5 Backend API** — key endpoints + tests.
+- **M6 Increment** — at least 2 use cases end-to-end.
+- **M7 Final** — complete system and documentation.
 
 ---
 
 ## 6. Change Management
-- Stories are living artifacts; changes are tracked via repository issues and linked pull requests.  
-- Major changes should update this SRS.
+
+- User stories are living artifacts, and changes are tracked through GitHub issues and linked pull requests.
+- Major requirement changes should be updated in this SRS document.
